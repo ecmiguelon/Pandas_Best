@@ -1,0 +1,1554 @@
+  <!DOCTYPE html>
+<html lang="en-US">
+<head><meta charset="UTF-8" /><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.v="1.2.3",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(e=>{if(e.hasAttribute("src")){let r=new URL(e.src).origin;r!==location.origin&&t.push({src:r,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(this),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){return new Promise((await this._littleBreath(),navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor)?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:async e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");t.text,i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(t){let e={};function r(t,r){!function t(r){!e[r]&&(e[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.remove.apply(r,arguments)});function i(t){return e[r].eventsToRewrite.indexOf(t)>=0?"rocket-"+t:t}}(t),e[t].eventsToRewrite.push(r)}function i(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}r(document,"DOMContentLoaded"),r(window,"DOMContentLoaded"),r(window,"load"),r(window,"pageshow"),r(document,"readystatechange"),i(document,"onreadystatechange"),i(window,"onload"),i(window,"onpageshow")}_delayJQueryReady(t){let e;function r(r){if(r&&r.fn&&!t.allJQueries.includes(r)){r.fn.ready=r.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(r):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(r)),r([])};let i=r.fn.on;r.fn.on=r.fn.init.prototype.on=function(){if(this[0]===window){function t(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=t(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(e=>{let r=arguments[0][e];delete arguments[0][e],arguments[0][t(e)]=r})}return i.apply(this,arguments),this},t.allJQueries.push(r)}e=r}r(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){r(t)}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" href="https://ponder.io/wp-content/themes/ponder/img/favicon.ico" />
+
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="" />
+
+<!-- Typography Links -->
+<link data-minify="1" rel="preload" href="https://ponder.io/wp-content/cache/min/1/hmp0lgw.css?ver=1693894772" data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')" >
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  rel="preload">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="rocketlazyloadscript" async data-rocket-src="https://www.googletagmanager.com/gtag/js?id=G-H14PQKMD63"></script>
+<script type="rocketlazyloadscript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H14PQKMD63');
+</script>
+
+		<style type="text/css">
+					.heateor_sss_button_instagram span.heateor_sss_svg,a.heateor_sss_instagram span.heateor_sss_svg{background:radial-gradient(circle at 30% 107%,#fdf497 0,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
+						div.heateor_sss_horizontal_sharing a.heateor_sss_button_instagram span{background:transparent!important;}div.heateor_sss_standard_follow_icons_container a.heateor_sss_button_instagram span{background:transparent;}
+							div.heateor_sss_horizontal_sharing a.heateor_sss_button_instagram span:hover{background:#767390!important;}div.heateor_sss_standard_follow_icons_container a.heateor_sss_button_instagram span:hover{background:#767390;}
+							div.heateor_sss_vertical_sharing  a.heateor_sss_button_instagram span{background:#B5C3D2!important;}div.heateor_sss_floating_follow_icons_container a.heateor_sss_button_instagram span{background:#B5C3D2;}
+							div.heateor_sss_vertical_sharing a.heateor_sss_button_instagram span:hover{background:#767390!important;}div.heateor_sss_floating_follow_icons_container a.heateor_sss_button_instagram span:hover{background:#767390;}
+				.heateor_sss_horizontal_sharing .heateor_sss_svg,.heateor_sss_standard_follow_icons_container .heateor_sss_svg{
+							background-color: transparent!important;
+				background: transparent!important;
+							color: #767390;
+						border-width: 1px;
+			border-style: solid;
+			border-color: #767390;
+		}
+					div.heateor_sss_horizontal_sharing span.heateor_sss_svg svg:hover path:not(.heateor_sss_no_fill),div.heateor_sss_horizontal_sharing span.heateor_sss_svg svg:hover ellipse, div.heateor_sss_horizontal_sharing span.heateor_sss_svg svg:hover circle, div.heateor_sss_horizontal_sharing span.heateor_sss_svg svg:hover polygon, div.heateor_sss_horizontal_sharing span.heateor_sss_svg svg:hover rect:not(.heateor_sss_no_fill){
+		        fill: #FFFFFF;
+		    }
+		    div.heateor_sss_horizontal_sharing span.heateor_sss_svg svg:hover path.heateor_sss_svg_stroke, div.heateor_sss_horizontal_sharing span.heateor_sss_svg svg:hover rect.heateor_sss_svg_stroke{
+		    	stroke: #FFFFFF;
+		    }
+				.heateor_sss_horizontal_sharing span.heateor_sss_svg:hover,.heateor_sss_standard_follow_icons_container span.heateor_sss_svg:hover{
+							background-color: #767390!important;
+				background: #767390!important;
+							color: #FFFFFF;
+						border-color: #767390;
+		}
+		.heateor_sss_vertical_sharing span.heateor_sss_svg,.heateor_sss_floating_follow_icons_container span.heateor_sss_svg{
+							background-color: #B5C3D2!important;
+				background: #B5C3D2!important;
+							color: #767390;
+						border-width: 1px;
+			border-style: solid;
+			border-color: #767390;
+		}
+						    div.heateor_sss_vertical_sharing span.heateor_sss_svg svg:hover path:not(.heateor_sss_no_fill),div.heateor_sss_vertical_sharing span.heateor_sss_svg svg:hover ellipse, div.heateor_sss_vertical_sharing span.heateor_sss_svg svg:hover circle, div.heateor_sss_vertical_sharing span.heateor_sss_svg svg:hover polygon{
+		        fill:#FFFFFF;
+		    }
+		    div.heateor_sss_vertical_sharing span.heateor_sss_svg svg:hover path.heateor_sss_svg_stroke{
+		    	stroke:#FFFFFF;
+		    }
+				.heateor_sss_vertical_sharing span.heateor_sss_svg:hover,.heateor_sss_floating_follow_icons_container span.heateor_sss_svg:hover{
+							background-color: #767390!important;
+				background: #767390!important;
+							color: #FFFFFF;
+						border-color: transparent;
+		}
+		@media screen and (max-width:783px) {.heateor_sss_vertical_sharing{display:none!important}}		</style>
+		<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v21.3 (Yoast SEO v22.8) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Python for Finance: Pandas Resample, Groupby, and Rolling</title><style id="rocket-critical-css">@font-face{font-family:"sofia-pro";src:url("https://use.typekit.net/af/09d302/00000000000000007735a14e/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/09d302/00000000000000007735a14e/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/09d302/00000000000000007735a14e/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");font-display:swap;font-style:normal;font-weight:700;font-stretch:normal}@font-face{font-family:"sofia-pro";src:url("https://use.typekit.net/af/e30e66/00000000000000007735a151/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff2"),url("https://use.typekit.net/af/e30e66/00000000000000007735a151/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff"),url("https://use.typekit.net/af/e30e66/00000000000000007735a151/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("opentype");font-display:swap;font-style:italic;font-weight:700;font-stretch:normal}@font-face{font-family:"sofia-pro";src:url("https://use.typekit.net/af/1416a9/00000000000000007735a15a/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"),url("https://use.typekit.net/af/1416a9/00000000000000007735a15a/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"),url("https://use.typekit.net/af/1416a9/00000000000000007735a15a/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");font-display:swap;font-style:normal;font-weight:300;font-stretch:normal}@font-face{font-family:"sofia-pro";src:url("https://use.typekit.net/af/1c49b4/00000000000000007735a15b/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3") format("woff2"),url("https://use.typekit.net/af/1c49b4/00000000000000007735a15b/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3") format("woff"),url("https://use.typekit.net/af/1c49b4/00000000000000007735a15b/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3") format("opentype");font-display:swap;font-style:italic;font-weight:300;font-stretch:normal}@font-face{font-family:"sofia-pro";src:url("https://use.typekit.net/af/4abf65/00000000000000007735a15d/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff2"),url("https://use.typekit.net/af/4abf65/00000000000000007735a15d/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff"),url("https://use.typekit.net/af/4abf65/00000000000000007735a15d/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("opentype");font-display:swap;font-style:normal;font-weight:500;font-stretch:normal}@font-face{font-family:"sofia-pro";src:url("https://use.typekit.net/af/af2180/00000000000000007735a160/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("woff2"),url("https://use.typekit.net/af/af2180/00000000000000007735a160/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("woff"),url("https://use.typekit.net/af/af2180/00000000000000007735a160/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("opentype");font-display:swap;font-style:italic;font-weight:500;font-stretch:normal}@font-face{font-family:"sofia-pro";src:url("https://use.typekit.net/af/5e6988/00000000000000007735a163/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/5e6988/00000000000000007735a163/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/5e6988/00000000000000007735a163/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");font-display:swap;font-style:normal;font-weight:400;font-stretch:normal}@font-face{font-family:"sofia-pro";src:url("https://use.typekit.net/af/37de2f/00000000000000007735a165/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff2"),url("https://use.typekit.net/af/37de2f/00000000000000007735a165/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff"),url("https://use.typekit.net/af/37de2f/00000000000000007735a165/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("opentype");font-display:swap;font-style:italic;font-weight:400;font-stretch:normal}@font-face{font-family:"sofia-pro";src:url("https://use.typekit.net/af/61b4ba/00000000000000007735a167/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff2"),url("https://use.typekit.net/af/61b4ba/00000000000000007735a167/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff"),url("https://use.typekit.net/af/61b4ba/00000000000000007735a167/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("opentype");font-display:swap;font-style:normal;font-weight:600;font-stretch:normal}@font-face{font-family:"sofia-pro";src:url("https://use.typekit.net/af/4b1947/00000000000000007735a16d/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("woff2"),url("https://use.typekit.net/af/4b1947/00000000000000007735a16d/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("woff"),url("https://use.typekit.net/af/4b1947/00000000000000007735a16d/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("opentype");font-display:swap;font-style:italic;font-weight:600;font-stretch:normal}ul{box-sizing:border-box}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}*,*::before,*::after{box-sizing:border-box}body,h1,h2,p,ul,li{margin:0}body{min-height:100vh;scroll-behavior:smooth;text-rendering:optimizeSpeed;line-height:1.5}ul{list-style:none;padding:0}img{max-width:100%;display:block}input{font:inherit}@media (prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}html{font-size:calc(1050vw / 1360)}@media (max-width:768px){html{font-size:calc(1000vw / 1360 * 3.2)}}body{font-size:1.6rem}body,p,li,a,h1,h2,strong,input{font-family:"Work Sans",sans-serif;font-weight:normal;font-style:normal;font-size:1.6rem;text-rendering:optimizeLegibility;color:#fff}h1,h2{display:block;margin:2rem 0;font-weight:600;font-family:sofia-pro,sans-serif;line-height:1.2em}h1:first-child,h2:first-child{margin-top:0}h1{font-size:4.6rem}@media (max-width:768px){h1{font-size:30px}}h2{font-size:3.2rem}@media (max-width:768px){h2{font-size:28px}}p{margin:2rem 0;color:#fff;font-weight:200;font-family:"Work Sans",sans-serif}p:first-of-type{margin-top:0}p:last-of-type{margin-bottom:0}li a{color:#1EC3F8;font-weight:500;font-size:inherit}strong{font-weight:600;font-size:inherit}a{text-decoration:none}body,html{position:relative;background-color:#000}html{-webkit-text-size-adjust:100%}body{position:relative;-webkit-font-smoothing:antialiased}@media (max-width:768px){body{overflow-x:hidden}}.max-container{position:relative;z-index:10;overflow-x:hidden}@media (max-width:768px){.max-container{width:100%}}.container{max-width:1150px;margin:0 auto;padding:0 4.5rem}@media (max-width:768px){.container{padding:0 2rem}}@media (min-width:1281px){.container{max-width:1440px}}.site-container{position:relative}.site-bg{position:fixed;top:0;left:50%;width:100%;height:100%;z-index:0;transform:translateX(-50%);opacity:.9}.site-bg img{position:absolute;top:0;left:0;width:100%;height:100%;object-position:bottom center}@media (min-width:769px){.grid{display:-ms-grid;display:grid}}.btn{position:relative;border:none;font-size:1.5rem;outline:none;border-radius:10px;padding:9px 30px;background-color:#1DF9EB;overflow:hidden;box-shadow:none;display:inline-block;font-weight:600;color:#000;font-family:"Work Sans",sans-serif;z-index:1;text-align:center}@media (max-width:768px){.btn{width:100%}}.btn::after{content:"";position:absolute;top:calc(50% - 10rem);left:calc(50% - 10rem);width:20rem;height:20rem;background-color:#000;border-color:transparent;border-radius:50%;transform:scale(0.1);opacity:0;z-index:-1}.header{position:absolute;top:0;left:0;width:100%;z-index:900}.header .header-container{padding-top:2rem;padding-bottom:2rem;align-items:center;-ms-grid-rows:auto;grid-template-rows:auto;-ms-grid-columns:minmax(90px,135px) 1fr;grid-template-columns:minmax(90px,135px) 1fr}@media (min-width:769px){.header .header-container{padding-left:8rem;max-width:1800px}}.header .logo{width:100%;max-width:135px;min-width:90px}.header .logo .header-logo{display:block}.header .logo .header-logo svg{width:100%;height:auto}.header-nav{justify-content:flex-end}.header-nav .inner-wrap{display:flex;align-items:center}.header-nav .mobile-logo{display:none}@media (max-width:768px){.header-nav{width:100%;height:100vh;position:fixed;top:0;left:0;display:none;background-color:rgba(0,0,0,0.5)}.header-nav .inner-wrap{display:block;position:relative;height:100vh;width:60%;background-color:#fff;right:0;top:0;position:fixed}.header-nav .mobile-logo{display:inline-block;padding-left:2rem;margin-bottom:1.5rem}}.header-nav--list{grid-auto-flow:column}@media (min-width:769px){.header-nav--list{margin-right:2rem}}@media (max-width:768px){.header-nav--list{padding-top:2rem;padding-bottom:20px}}.header-nav--item{position:relative;padding:2rem 2.1rem}@media (max-width:768px){.header-nav--item{padding:0 2rem 1.5rem}}.header-nav--parent{position:relative;color:#fff;font-size:1.4rem;text-decoration:none;font-weight:500}.header-nav--parent::after{content:'';position:absolute;bottom:-1rem;left:0;width:100%;height:1px;background-color:transparent}@media (max-width:768px){.header-nav--parent{font-size:16px;color:#011D48;font-weight:600}}@media (min-width:769px){.header-nav{padding-right:4.5rem;display:flex;align-items:center}}@media (min-width:769px){.header-subnav--wrap{position:absolute;top:100%;left:50%;width:fit-content;padding:1.5rem 2rem;min-width:120%;text-align:center;transform:translateY(-4px) translateX(-50%);background-color:rgba(7,22,38,0.95);box-shadow:0px 0px 1.39084px rgba(29,196,249,0.5),0px 0px 13.9084px rgba(29,196,249,0.5);border-radius:6px;opacity:0}}@media (max-width:768px){.header-subnav--wrap{padding:0 20px;text-align:left}}.header-subnav--link{font-size:1.4rem;color:#fff;text-decoration:none;text-align:center}@media (max-width:768px){.header-subnav--link{color:#011D48;font-size:15px;font-weight:500}}@media (max-width:768px){.header-subnav--list{margin-top:7px}}@media (max-width:768px){.header-subnav--item{font-size:16px}.header-subnav--item:not(:last-child){margin-bottom:7px}}.hamburger{position:absolute;right:2rem;top:1.5rem;width:39px;height:39px;background-color:#fff;border-radius:5px}@media (min-width:769px){.hamburger{display:none}}.hamburger div{position:relative;width:100%;height:100%}.hamburger span{background:#011D48;width:68%;height:4px;border-radius:5px;display:block;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.hamburger span.line-1{transform:translate(-50%,-10px)}.hamburger span.line-3{transform:translate(-50%,6px)}input{font-style:normal;font-weight:400;font-size:16px;border:1px solid #B3C0CE;color:#011D48;background:#fff;padding:8px 22px;outline:0;text-align:left;width:100%;border-radius:3px;appearance:none;-webkit-appearance:none;outline:none;margin:0}input[type=submit]{width:auto}input:-ms-input-placeholder{color:#4A4A4A;opacity:1}input:-ms-input-placeholder{color:#4A4A4A}input::-ms-input-placeholder{color:#4A4A4A}.demo-form{position:relative;max-width:650px}.demo-form--row{display:flex;flex-wrap:wrap}.demo-form input[type=submit]{width:auto;margin-top:2rem;border-color:#0830FE;color:#0830FE;font-weight:600;padding:8px 40px;border-radius:999px;text-align:center}.demo-form--row{margin-bottom:10px}.demo-form--row.two-col{position:relative}.demo-form--row.two-col .demo-form--input{position:relative;width:100%}@media (min-width:769px){.demo-form--row.two-col .demo-form--input{width:calc(50% - 5px)}.demo-form--row.two-col .demo-form--input:first-child{margin-right:10px}}@media (max-width:768px){.demo-form--row.two-col .demo-form--input:first-child{margin-bottom:10px}}.demo-form--row.one-col{position:relative}.demo-form--row.one-col .demo-form--input{position:relative;width:100%}.modal-calendly{position:fixed;top:0;left:0;width:100%;height:100vh;opacity:0;visibility:hidden;overflow:auto;z-index:-1}.modal-calendly--form{margin-top:30px}.modal-calendly--inner{position:absolute;top:75px;left:0;right:0;margin:0 auto 75px;width:90%;max-width:650px;padding:4rem;background:white;opacity:0;border-radius:10px;transform:translateY(50px);box-shadow:0px 19px 84px -10px rgba(0,0,0,0.45);z-index:2000}.modal-calendly--inner *{color:#000}@media (max-width:768px){.modal-calendly--inner{padding:2rem}}@media (min-width:1281px){.modal-calendly--inner h2{font-size:30px}.modal-calendly--inner p{font-size:17px}}div.modal-bg{display:none}div.modal-close{position:fixed;z-index:9999;top:5rem;right:5rem;padding:20px;background:#1DF9EB;border-radius:50%;box-shadow:0 10px 20px rgba(0,0,0,0.5)}div.modal-close div{position:absolute;top:calc(50% - 10px);left:calc(50% - 11px);width:18px;height:18px}div.modal-close span{position:absolute;width:22px;height:2px;background:#000;display:block;top:50%}div.modal-close span:first-child{transform:rotate(45deg)}div.modal-close span:last-child{transform:rotate(135deg)}@media (max-width:768px){div.modal-close{right:2rem}}body.blog-single{background-color:#fff}body.blog-single .blog-detail--wrap{padding-bottom:70px}@media (max-width:768px){body.blog-single .blog-detail--wrap{padding-bottom:50px}}body.blog-single .blog-detail--wrap .container{max-width:calc(1024px + 9rem)}@media (min-width:1281px){body.blog-single .blog-detail--wrap .container{max-width:calc(100vw - 16.6rem)}}body.blog-single.is-white #header .logo-type path{fill:#000102}body.blog-single.is-white #header .header-nav--parent{color:#000102}body.blog-single.is-white h1{color:#000102}body.blog-single.is-white .site-bg{display:none;visibility:hidden}body.blog-single.is-white .blog-detail--wrap{background-color:transparent}body.blog-single.is-white .blog-detail--content .author p{color:#000102}@media (max-width:768px){body.blog-single.is-white .header-nav{border:solid 1px #eee}}.blog-detail--bg{position:absolute;top:0;left:0;width:100%;height:100vh;max-height:800px;overflow:hidden;z-index:0}.blog-detail--bg img{display:block;position:absolute;width:100%;height:auto;object-fit:cover;object-position:bottom center;min-height:100%}.blog-detail--main{position:relative;z-index:1}.blog-detail--title{padding:18rem 0}@media (max-width:768px){.blog-detail--title{padding:6rem 0 15rem}}@media (max-width:499px){.blog-detail--title{padding:8rem 0 15rem}}.blog-detail--title h1{margin:2rem auto 0;max-width:720px;line-height:109.3%;letter-spacing:-0.01em}@media (min-width:1281px){.blog-detail--title h1{max-width:calc(100vw - 56rem)}}.blog-detail--wrap{position:relative}@media (min-width:769px){.blog-detail--wrap .rss{padding-top:20px}}@media (max-width:768px){.blog-detail--wrap .rss .heateor_sss_sharing_ul{display:flex;justify-content:center}}.blog-detail--content{position:relative;max-width:720px;margin:0 auto;margin-top:-15rem}@media (max-width:768px){.blog-detail--content{margin-top:-13rem}}@media (min-width:1281px){.blog-detail--content{max-width:calc(100vw - 56rem)}}.blog-detail--content .author{display:flex;align-items:center;justify-content:space-between;padding-bottom:5rem}@media (max-width:768px){.blog-detail--content .author{padding-bottom:2rem}}@media (min-width:769px){.blog-detail--content .author{width:calc(100% - 66px)}}.blog-detail--content .author p{display:block;color:#fff;font-size:1.4rem;margin:0;font-weight:500;line-height:137.8%}@media (min-width:1281px){.blog-detail--content .author p{font-size:1.6rem}}.blog-detail--content .author p:last-of-type span.timing{position:relative;margin-left:5px;padding-left:10px}.blog-detail--content .author p:last-of-type span.timing::after{content:'';position:absolute;left:0;top:calc(50% - 1px);background-color:#000102;width:4px;height:4px;border-radius:50%}@media (max-width:768px){.blog-detail--content .author{flex-wrap:wrap;padding-left:0;padding-right:0}.blog-detail--content .author p{width:100%}.blog-detail--content .author p:last-of-type{margin-top:5px;margin-bottom:10px}}.blog-detail--content .image{position:relative;border-radius:10px;overflow:hidden}.blog-detail--content .image img{width:100%}.blog-detail--content .copy{padding:4rem 0}.blog-detail--content .copy :not(pre) *,.blog-detail--content .copy :not(code) *{color:#404352}.blog-detail--content .copy p{color:#404352}@media (max-width:768px){.blog-detail--content img{width:100%;height:auto}}.blog-detail--content .main-wrap{position:relative}@media (min-width:769px){.blog-detail--content .main-wrap{width:calc(100% - 66px)}}.blog-detail--content .main-wrap .rss-wrap{width:4.2rem;height:100%;padding-bottom:50px}@media (max-width:768px){.blog-detail--content .main-wrap .rss-wrap{width:100%;display:flex;align-items:center;justify-content:center;padding-bottom:0}.blog-detail--content .main-wrap .rss-wrap .inner-wrap{width:100%}}.blog-detail--content .main-wrap .rss-wrap .inner-wrap{position:relative;width:4.2rem;height:100%}.blog-detail--content .main-wrap .rss-wrap .icons-wrap a{display:block;border-radius:50%;border:1px solid #767390;position:relative}.blog-detail--content .main-wrap .rss-wrap .icons-wrap a span{padding:3px!important}.blog-detail--content .main-wrap .rss-wrap .icons-wrap a:not(:last-child){margin-bottom:14px}@media (min-width:769px){.blog-detail--content .main-wrap .rss-wrap .icons-wrap a{width:3rem;height:3rem}}@media (min-width:769px){.blog-detail--content .main-wrap .rss-wrap{position:absolute;right:-65px;top:0}}.blog-detail--content .image{position:relative}.blog-detail--content .image:before{content:'';height:0;display:block;padding-top:54.5%}.blog-detail--content .image img{position:absolute;width:100%;height:100%;top:0;left:0;object-fit:cover}.blog-detail--content .author .cat{font-size:1rem;line-height:120%;text-align:center;text-transform:uppercase;color:#1DC4F9;background:rgba(29,196,249,0.1);padding:8px 12px;border-radius:4px;font-weight:bold}@media (min-width:1281px){.blog-detail--content .author .cat{font-size:1.2rem}}.blog-detail--content .author .name{color:#000102;font-weight:500}.blog-detail--content .author .date{font-weight:400}.blog-detail--content .author .date span{font-style:italic}div.heateor_sss_sharing_ul a:link{text-decoration:none;background:transparent!important}div.heateor_sss_sharing_ul{padding-left:0!important;margin:1px 0!important}div.heateor_sss_horizontal_sharing div.heateor_sss_sharing_ul a{float:left;padding:0!important;list-style:none!important;border:none!important;margin:2px}div.heateor_sss_sharing_ul a:before{content:none!important}.heateor_sss_sharing_container a{padding:0!important;box-shadow:none!important;border:none!important}.heateorSssClear{clear:both}div.heateor_sss_sharing_container a:before{content:none}#header{position:fixed!important}#header .btn{font-size:1.4rem;font-weight:500;padding:7px 20px}.blog-detail--bg img{bottom:0}@media (max-width:768px).company--team-member{width:50% !important}body{--jp-mirror-editor-keyword-color:#c792ea;--jp-mirror-editor-atom-color:#d6deeb;--jp-mirror-editor-number-color:#f78c6c;--jp-mirror-editor-def-color:#d6deeb;--jp-cell-editor-background:#011627;--jp-mirror-editor-variable-color:#d6deeb;--jp-mirror-editor-variable-2-color:#d6deeb;--jp-mirror-editor-variable-3-color:#d6deeb;--jp-mirror-editor-punctuation-color:#d6deeb;--jp-mirror-editor-property-color:#d6deeb;--jp-mirror-editor-operator-color:#d6deeb;--jp-mirror-editor-comment-color:#d6deeb;--jp-mirror-editor-string-color:#ecc48d;--jp-mirror-editor-string-2-color:#d6deeb;--jp-mirror-editor-meta-color:#d6deeb;--jp-mirror-editor-qualifier-color:#d6deeb;--jp-mirror-editor-builtin-color:#addb67;--jp-mirror-editor-bracket-color:#d6deeb;--jp-mirror-editor-tag-color:#d6deeb;--jp-mirror-editor-attribute-color:#d6deeb;--jp-mirror-editor-header-color:#d6deeb;--jp-mirror-editor-quote-color:#d6deeb;--jp-mirror-editor-link-color:#ecc48d;--jp-mirror-editor-error-color:#ff5874;--jp-mirror-editor-hr-color:#d6deeb}.max-container{overflow-y:clip}.header-subnav--wrap{min-width:134%}:root{--swiper-theme-color:#007aff}:root{--swiper-navigation-size:44px}</style>
+	<meta name="description" content="Learn how you can use resample, groupby, and rolling in pandas and supercharge your workflows with Ponder!" />
+	<link rel="canonical" href="https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Python for Finance: Pandas Resample, Groupby, and Rolling" />
+	<meta property="og:description" content="With an end-to-end example, we explore how you can leverage pandas to understand trends in times series data quickly, with a particular focus on time series methods like pandas resample, grouping by dates, and performing rolling operations to smooth out the results." />
+	<meta property="og:url" content="https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/" />
+	<meta property="og:site_name" content="Ponder" />
+	<meta property="article:published_time" content="2023-05-31T15:13:33+00:00" />
+	<meta property="article:modified_time" content="2023-06-13T14:24:57+00:00" />
+	<meta property="og:image" content="https://ponder.io/wp-content/uploads/2023/05/3879299914_Bank-in-NYC_0.2-_-Line-chart-with-financial-time-s_xl-beta-v2-2-2.png" />
+	<meta property="og:image:width" content="896" />
+	<meta property="og:image:height" content="512" />
+	<meta property="og:image:type" content="image/png" />
+	<meta name="author" content="Matt Harrison" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Matt Harrison" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="15 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/#article","isPartOf":{"@id":"https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/"},"author":{"name":"Matt Harrison","@id":"https://ponder.io/#/schema/person/7a9caa0a23b46a89a4905f62684dc95d"},"headline":"Python for Finance: Pandas Resample, Groupby, and Rolling","datePublished":"2023-05-31T15:13:33+00:00","dateModified":"2023-06-13T14:24:57+00:00","mainEntityOfPage":{"@id":"https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/"},"wordCount":1619,"publisher":{"@id":"https://ponder.io/#organization"},"image":{"@id":"https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/#primaryimage"},"thumbnailUrl":"https://ponder.io/wp-content/uploads/2023/05/3879299914_Bank-in-NYC_0.2-_-Line-chart-with-financial-time-s_xl-beta-v2-2-2.png","keywords":["finance","pandas","resample"],"articleSection":["Articles"],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/","url":"https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/","name":"Python for Finance: Pandas Resample, Groupby, and Rolling","isPartOf":{"@id":"https://ponder.io/#website"},"primaryImageOfPage":{"@id":"https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/#primaryimage"},"image":{"@id":"https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/#primaryimage"},"thumbnailUrl":"https://ponder.io/wp-content/uploads/2023/05/3879299914_Bank-in-NYC_0.2-_-Line-chart-with-financial-time-s_xl-beta-v2-2-2.png","datePublished":"2023-05-31T15:13:33+00:00","dateModified":"2023-06-13T14:24:57+00:00","description":"Learn how you can use resample, groupby, and rolling in pandas and supercharge your workflows with Ponder!","breadcrumb":{"@id":"https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/#primaryimage","url":"https://ponder.io/wp-content/uploads/2023/05/3879299914_Bank-in-NYC_0.2-_-Line-chart-with-financial-time-s_xl-beta-v2-2-2.png","contentUrl":"https://ponder.io/wp-content/uploads/2023/05/3879299914_Bank-in-NYC_0.2-_-Line-chart-with-financial-time-s_xl-beta-v2-2-2.png","width":896,"height":512},{"@type":"BreadcrumbList","@id":"https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://ponder.io/"},{"@type":"ListItem","position":2,"name":"Python for Finance: Pandas Resample, Groupby, and Rolling"}]},{"@type":"WebSite","@id":"https://ponder.io/#website","url":"https://ponder.io/","name":"Ponder","description":"Ponder","publisher":{"@id":"https://ponder.io/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://ponder.io/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://ponder.io/#organization","name":"Ponder","url":"https://ponder.io/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://ponder.io/#/schema/logo/image/","url":"https://ponder.io/wp-content/uploads/2022/02/Ponder_LogoWordmark_H1_Color.png","contentUrl":"https://ponder.io/wp-content/uploads/2022/02/Ponder_LogoWordmark_H1_Color.png","width":8000,"height":2710,"caption":"Ponder"},"image":{"@id":"https://ponder.io/#/schema/logo/image/"}},{"@type":"Person","@id":"https://ponder.io/#/schema/person/7a9caa0a23b46a89a4905f62684dc95d","name":"Matt Harrison","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://ponder.io/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/7fe0d2f333067f9695dc1232f1dbaccf?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/7fe0d2f333067f9695dc1232f1dbaccf?s=96&d=mm&r=g","caption":"Matt Harrison"},"url":"https://ponder.io/author/mattharrison/"}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//js.hs-scripts.com' />
+<link rel='dns-prefetch' href='//fonts.gstatic.com' />
+<link rel='dns-prefetch' href='//use.typekit.net' />
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/ponder.io\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.5.3"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\u2b1b","\ud83d\udc26\u200b\u2b1b")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<link data-minify="1" rel='preload'  href='https://ponder.io/wp-content/cache/min/1/wp-content/plugins/wp-quicklatex/css/quicklatex-format.css?ver=1693894772' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  type='text/css' media='all' />
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='preload'  href='https://ponder.io/wp-includes/css/dist/block-library/style.min.css?ver=6.5.3' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  type='text/css' media='all' />
+<link data-minify="1" rel='preload'  href='https://ponder.io/wp-content/cache/min/1/wp-content/plugins/prismatic/css/styles-blocks.css?ver=1693894772' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  type='text/css' media='all' />
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link data-minify="1" rel='preload'  href='https://ponder.io/wp-content/cache/min/1/wp-content/plugins/prismatic/lib/highlight/css/night-owl.css?ver=1693894791' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  type='text/css' media='all' />
+<link data-minify="1" rel='preload'  href='https://ponder.io/wp-content/cache/min/1/wp-content/themes/ponder/style.css?ver=1693894772' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  type='text/css' media='all' />
+<link data-minify="1" rel='preload'  href='https://ponder.io/wp-content/cache/min/1/wp-content/plugins/sassy-social-share/public/css/sassy-social-share-public.css?ver=1693894772' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  type='text/css' media='all' />
+<link data-minify="1" rel='preload'  href='https://ponder.io/wp-content/cache/min/1/wp-content/themes/ponder/custom.css?ver=1693894772' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  type='text/css' media='all' />
+<link data-minify="1" rel='preload'  href='https://ponder.io/wp-content/cache/min/1/wp-content/themes/ponder/css/custom-style.css?ver=1693894772' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  type='text/css' media='all' />
+<link data-minify="1" rel='preload'  href='https://ponder.io/wp-content/cache/min/1/wp-content/themes/ponder/css/swiper-bundle.css?ver=1693894772' data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.removeAttribute('data-rocket-async')"  type='text/css' media='all' />
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://ponder.io/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://ponder.io/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://ponder.io/wp-content/cache/min/1/wp-content/themes/ponder/js/custom-js.js?ver=1693894772" id="custom-js-js-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://ponder.io/wp-content/cache/min/1/wp-content/themes/ponder/js/swiper-bundle.js?ver=1693894772" id="swiper-bundle-js-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://ponder.io/wp-content/cache/min/1/wp-content/plugins/wp-quicklatex/js/wp-quicklatex-frontend.js?ver=1693894772" id="wp-quicklatex-frontend-js" defer></script>
+<link rel="https://api.w.org/" href="https://ponder.io/wp-json/" /><link rel="alternate" type="application/json" href="https://ponder.io/wp-json/wp/v2/posts/5043" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://ponder.io/xmlrpc.php?rsd" />
+<link rel='shortlink' href='https://ponder.io/?p=5043' />
+<link rel="alternate" type="application/json+oembed" href="https://ponder.io/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fponder.io%2Fpython-for-finance-pandas-resample-groupby-and-rolling%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://ponder.io/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fponder.io%2Fpython-for-finance-pandas-resample-groupby-and-rolling%2F&#038;format=xml" />
+<meta name="cdp-version" content="1.4.3" /><meta name="generator" content="Site Kit by Google 1.111.0" /><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Ponder",
+  "url": "https://ponder.io/",
+  "logo": "https://ponder.io/wp-content/themes/ponder/img/bg.webp",
+  "sameAs": [
+    "https://twitter.com/ponderdata",
+    "https://www.linkedin.com/company/ponderdata"
+  ]
+}
+</script>
+<meta name="twitter:site" content="@ponderdata" />
+
+
+<meta name="google-site-verification" content="7qpe89_-WVeACTOVqIDnQ0b7KKMjhD0xrHU6xfryDes" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="rocketlazyloadscript" async data-rocket-src="https://www.googletagmanager.com/gtag/js?id=G-1ZDXPSQRQ2"></script>
+<script type="rocketlazyloadscript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1ZDXPSQRQ2');
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="rocketlazyloadscript" async data-rocket-src="https://www.googletagmanager.com/gtag/js?id=G-21R8BK6EKX"></script>
+<script type="rocketlazyloadscript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-21R8BK6EKX');
+</script>			<!-- DO NOT COPY THIS SNIPPET! Start of Page Analytics Tracking for HubSpot WordPress plugin v10.2.5-->
+			<script type="rocketlazyloadscript" data-rocket-type="text/javascript" class="hsq-set-content-id" data-content-id="blog-post">
+				var _hsq = _hsq || [];
+				_hsq.push(["setContentType", "blog-post"]);
+			</script>
+			<!-- DO NOT COPY THIS SNIPPET! End of Page Analytics Tracking for HubSpot WordPress plugin -->
+			    <script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+        //<![CDATA[
+        function olint_prepare_all_external_links() {
+
+            if( !document.links ) {
+                document.links = document.getElementsByTagName('a');
+            }
+            var all_links                = document.links;
+            var open_in_new_tab          = false;
+            var open_external_in_new_tab = 'yes';
+            var open_internal_in_new_tab = '';
+
+            // loop through all the links of current page.
+            for( var current = 0; current < all_links.length; current++ ) {
+                var current_link = all_links[current];
+                open_in_new_tab  = false;
+
+                //only work if current link does not have any onClick attribute.
+                if( all_links[current].hasAttribute('onClick') == false ) {
+                    if('yes' == open_internal_in_new_tab){
+                        // open link in new tab if the web address starts with http or https, and refers to current domain.
+                        if( (current_link.href.search(/^http/) != -1) && ((current_link.href.search('ponder.io')) || (current_link.href.search(/^#/))) ){
+                            open_in_new_tab = true;
+                        }
+                    }
+                    if('yes' == open_external_in_new_tab){
+                        // open link in new tab if the web address starts with http or https, but does not refer to current domain.
+                        if( (current_link.href.search(/^http/) != -1) && (current_link.href.search('ponder.io') == -1)  && (current_link.href.search(/^#/) == -1) ){
+                            open_in_new_tab = true;
+                        }
+                    }
+
+                    //if open_in_new_tab is true, update onClick attribute of current link.
+                    if( open_in_new_tab == true ){
+                        all_links[current].setAttribute( 'onClick', 'javascript:window.open(\''+current_link.href+'\'); return false;' );
+                    }
+                    all_links[current].removeAttribute('target');
+                }
+            }
+        }
+
+        function olint_load_external_links_in_new_tab( function_name ){
+            var olint_on_load = window.onload;
+
+            if (typeof window.onload != 'function'){
+                window.onload = function_name;
+            } else {
+                window.onload = function(){
+                    olint_on_load();
+                    function_name();
+                }
+            }
+        }
+
+        olint_load_external_links_in_new_tab( olint_prepare_all_external_links );
+
+    //]]>
+    </script>
+    
+<!-- Google AdSense snippet added by Site Kit -->
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">
+<!-- End Google AdSense snippet added by Site Kit -->
+<link rel="icon" href="https://ponder.io/wp-content/uploads/2022/03/cropped-favicon-cropped-150x150.png" sizes="32x32" />
+<link rel="icon" href="https://ponder.io/wp-content/uploads/2022/03/cropped-favicon-cropped-300x300.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://ponder.io/wp-content/uploads/2022/03/cropped-favicon-cropped-300x300.png" />
+<meta name="msapplication-TileImage" content="https://ponder.io/wp-content/uploads/2022/03/cropped-favicon-cropped-300x300.png" />
+		<style type="text/css" id="wp-custom-css">
+			.legal--title {
+    position: initial;
+}
+
+.wp-image-3415 {
+	float: right;
+	margin-top: 15px;
+}
+
+.home-hero {
+	display:none;
+}
+
+.home--hero-container {
+    grid-template-columns: 10% 90%
+}
+.home--hero-content {
+	max-width: none;
+		text-align:center
+
+	
+}
+
+.home--hero-copy {
+max-width: none;
+	text-align:center
+}
+
+.home--hero-content h1 {
+	width:100%;
+text-align: center;	
+}
+
+.home--hero-form {
+	max-width:none;
+text-align: center;
+}
+
+.home--hero {
+    background: url(https://ponder.io/wp-content/uploads/2023/10/Project_Pine_Home_Header_BG_03.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+/*customer logo grid removed 2023-12-01 by Nicole Van*/
+.home--logogrid {
+    display: none;
+}		</style>
+		<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript><script type="rocketlazyloadscript">
+/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+(function(w){"use strict";if(!w.loadCSS){w.loadCSS=function(){}}
+var rp=loadCSS.relpreload={};rp.support=(function(){var ret;try{ret=w.document.createElement("link").relList.supports("preload")}catch(e){ret=!1}
+return function(){return ret}})();rp.bindMediaToggle=function(link){var finalMedia=link.media||"all";function enableStylesheet(){link.media=finalMedia}
+if(link.addEventListener){link.addEventListener("load",enableStylesheet)}else if(link.attachEvent){link.attachEvent("onload",enableStylesheet)}
+setTimeout(function(){link.rel="stylesheet";link.media="only x"});setTimeout(enableStylesheet,3000)};rp.poly=function(){if(rp.support()){return}
+var links=w.document.getElementsByTagName("link");for(var i=0;i<links.length;i++){var link=links[i];if(link.rel==="preload"&&link.getAttribute("as")==="style"&&!link.getAttribute("data-loadcss")){link.setAttribute("data-loadcss",!0);rp.bindMediaToggle(link)}}};if(!rp.support()){rp.poly();var run=w.setInterval(rp.poly,500);if(w.addEventListener){w.addEventListener("load",function(){rp.poly();w.clearInterval(run)})}else if(w.attachEvent){w.attachEvent("onload",function(){rp.poly();w.clearInterval(run)})}}
+if(typeof exports!=="undefined"){exports.loadCSS=loadCSS}
+else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
+</script>
+</head>
+  <body class="blog-single is-white">
+    <!--[if < IE 9]><style media="screen">.old-browsers{position:relative;background:#fff;width:100%;height:100%;color:#000;font-family:sans-serif;font-size:20px;text-align:center;padding:0;margin:0}.old-browsers h2{padding:20px 0}.old-browsers p,.old-browsers ul{margin:0 auto}.old-browsers p{max-width:700px;padding-bottom:50px;line-height:1.4em}.old-browsers ul li{display:inline-block;padding:0 25px}.old-browsers ul li img{width:115px}.old-browsers ul li p{padding-top:15px;color:#249AE1}body{margin:0;padding:0}</style><div class="old-browsers"> <h2>Browser out of date.</h2> <p>It appears you're running on a very old web browser that we're unable to support. If you would like to view the site you'll need to update your browser. Please choose from any of the following modern browsers. Thanks!</p> <ul> <li> <a href="https://www.google.com/intl/en/chrome/browser/desktop/index.html#brand=CHMB&utm_campaign=en&utm_source=en-ha-na-us-sk&utm_medium=ha"> <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/chrome/chrome_128x128.png" alt="Google Chrome"> <p>Google Chrome</p> </a> </li> <li> <a href="https://www.mozilla.org/en-US/firefox/new/"> <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/firefox/firefox_128x128.png" alt="Mozilla Firefox"> <p>Mozilla Firefox</p> </a> </li> <li> <a href="https://support.apple.com/downloads/safari"> <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/safari/safari_128x128.png" alt="Safari"> <p>Safari</p> </a> </li> <li> <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie"> <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/internet-explorer/internet-explorer_128x128.png" alt="Internet Explorer"> <p>Internet Explorer</p> </a> </li> </ul></div><![endif]-->
+
+
+    <header id="header" class="header eyebrow-active" role="navigation">
+        
+      <div id="eyebrow" class="eyebrow">
+        <div class="container">
+
+          <div class="eyebrow-container flex wrap a-c j-c">
+                      <p><strong>Oct 23, 2023</strong> Snowflake has announced its intent to acquire Ponder.</p>
+                                    <a class = "text-anchor" href="https://ponder.io/%f0%9f%90%bc-%e2%9d%a4%ef%b8%8f-%e2%9d%84%ef%b8%8f/" target = "_blank">Read more from Ponder here</a>
+                      </div>
+
+          <div id="eyebrow-close" class="eyebrow-close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="16.9492" y="5.63623" width="2" height="16" rx="1" transform="rotate(45 16.9492 5.63623)" fill="white"/>
+              <rect x="18.3633" y="16.9502" width="2" height="16" rx="1" transform="rotate(135 18.3633 16.9502)" fill="white"/>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+            <div class="container header-container grid">
+
+        <div class="logo">
+          <a href="https://ponder.io/" class="header-logo"><svg width="161" height="39" viewBox="0 0 161 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g class="logo-mark" clip-path="url(#clip0_209_1424)">
+    <path d="M22.7436 18.3398H27.3848C28.5554 18.3398 29.5044 17.363 29.5044 16.1581L29.5044 2.18177C29.5044 0.976814 28.5554 5.72205e-06 27.3848 5.72205e-06H22.7436C21.573 5.72205e-06 20.624 0.976814 20.624 2.18177V16.1581C20.624 17.363 21.573 18.3398 22.7436 18.3398Z" fill="#EF5BA1"/>
+    <path d="M2.6528 39H7.29396C8.46459 39 9.41357 38.0232 9.41357 36.8182L9.41357 22.8419C9.41357 21.637 8.46459 20.6602 7.29396 20.6602H2.6528C1.48217 20.6602 0.533189 21.637 0.533189 22.8419L0.533189 36.8182C0.533189 38.0232 1.48217 39 2.6528 39Z" fill="#00AD99"/>
+    <path d="M27.4132 20.6606H13.8349C13.2731 20.6606 12.7343 20.8902 12.3368 21.299C11.9394 21.7077 11.7158 22.2621 11.7153 22.8404V36.8187C11.7153 37.3974 11.9386 37.9524 12.3361 38.3616C12.7336 38.7709 13.2727 39.0008 13.8349 39.001H27.4132C27.6916 39.001 27.9672 38.9445 28.2244 38.8349C28.4816 38.7252 28.7153 38.5644 28.9121 38.3618C29.109 38.1591 29.2651 37.9186 29.3716 37.6538C29.4781 37.389 29.5328 37.1053 29.5328 36.8187V22.8404C29.5323 22.2621 29.3087 21.7077 28.9113 21.299C28.5138 20.8902 27.975 20.6606 27.4132 20.6606ZM23.6713 31.6632C23.6713 31.8303 23.6393 31.9958 23.5771 32.1503C23.515 32.3047 23.4238 32.445 23.309 32.5632C23.1941 32.6813 23.0578 32.7751 22.9077 32.839C22.7577 32.9029 22.5969 32.9358 22.4345 32.9357H18.8703C18.5424 32.9357 18.2279 32.8016 17.9961 32.563C17.7642 32.3243 17.634 32.0007 17.634 31.6632V27.9945C17.6339 27.8273 17.6658 27.6618 17.7279 27.5073C17.7901 27.3529 17.8811 27.2125 17.9959 27.0943C18.1107 26.9761 18.247 26.8823 18.3971 26.8183C18.5471 26.7544 18.7079 26.7214 18.8703 26.7214H22.4345C22.5969 26.7214 22.7578 26.7542 22.9078 26.8182C23.0579 26.8821 23.1943 26.9759 23.3092 27.0941C23.424 27.2124 23.5151 27.3527 23.5773 27.5072C23.6394 27.6617 23.6713 27.8273 23.6713 27.9945V31.6632Z" fill="#F68B33"/>
+    <path d="M16.231 0H2.65282C2.37442 -7.47867e-09 2.09876 0.0564493 1.84156 0.166124C1.58437 0.275799 1.35068 0.436551 1.15385 0.639199C0.957021 0.841846 0.800902 1.08242 0.69441 1.34718C0.587918 1.61194 0.53314 1.8957 0.533203 2.18226V16.1606C0.533203 16.7392 0.756519 17.2941 1.15402 17.7033C1.55153 18.1125 2.09066 18.3423 2.65282 18.3423H16.231C16.7932 18.3423 17.3323 18.1125 17.7298 17.7033C18.1273 17.2941 18.3506 16.7392 18.3506 16.1606V2.18226C18.3506 1.60357 18.1273 1.04858 17.7298 0.639345C17.3324 0.230106 16.7932 0.00013218 16.231 0V0ZM12.4887 11.0045C12.4887 11.1717 12.4568 11.3372 12.3947 11.4916C12.3326 11.6461 12.2415 11.7864 12.1267 11.9047C12.0119 12.0229 11.8756 12.1167 11.7256 12.1807C11.5755 12.2446 11.4147 12.2776 11.2523 12.2776H7.68768C7.52529 12.2776 7.36448 12.2446 7.21445 12.1807C7.06442 12.1167 6.92811 12.0229 6.8133 11.9047C6.69849 11.7864 6.60744 11.6461 6.54533 11.4916C6.48323 11.3372 6.4513 11.1717 6.45136 11.0045V7.33783C6.45136 7.00032 6.58162 6.67664 6.81347 6.43799C7.04533 6.19933 7.35979 6.06526 7.68768 6.06526H11.2523C11.5802 6.06526 11.8947 6.19933 12.1265 6.43799C12.3584 6.67664 12.4887 7.00032 12.4887 7.33783V11.0045Z" fill="#33BBED"/>
+  </g>
+  <g class="logo-type" clip-path="url(#clip1_209_1424)">
+    <path d="M55.6043 10.3027C59.4564 10.3027 61.104 13.1054 61.104 15.8817C61.104 18.7092 59.4564 21.4615 55.6043 21.4615H51.6262V27.6968H48.5332V10.3027H55.6043ZM55.4518 18.6844C57.2751 18.6844 58.0118 17.2959 58.0118 15.8817C58.0118 14.5188 57.3024 13.0542 55.5255 13.0542H51.6262V18.6844H55.4518Z" fill="white"/>
+    <path d="M65.4067 19.0124C65.4067 14.0897 69.2846 10 74.2746 10C79.2422 10 83.1424 14.0897 83.1424 19.0124C83.1424 23.9351 79.2447 27.9983 74.2771 27.9983C69.2846 27.9983 65.4067 23.9351 65.4067 19.0124ZM80.0561 19.0124C80.0561 15.6805 77.5971 12.8778 74.2547 12.8778C70.9346 12.8778 68.5271 15.6846 68.5271 19.0124C68.5271 22.3401 70.9346 25.1214 74.2547 25.1214C77.5971 25.1222 80.0528 22.3451 80.0528 19.0124H80.0561Z" fill="white"/>
+    <path d="M99.2198 10.3027H102.312V27.6968H99.4991L92.5292 15.9833V27.6968H89.437V10.3027H92.3518L99.2198 21.9156V10.3027Z" fill="white"/>
+    <path d="M116.559 10.3027C121.552 10.3027 124.467 14.0895 124.467 19.0377C124.467 23.9604 121.552 27.6968 116.559 27.6968H109.716V10.3027H116.559ZM116.559 24.9453C119.727 24.9453 121.349 22.2689 121.349 19.0377C121.349 15.781 119.727 13.0542 116.559 13.0542H112.808V24.9436L116.559 24.9453Z" fill="white"/>
+    <path d="M133.743 24.9436H141.651V27.6951H130.677V10.3027H141.398V13.0559H133.743V17.7516H140.434V20.5542H133.743V24.9436Z" fill="white"/>
+    <path d="M156.88 27.6968L152.57 21.36H150.995V27.6968H147.903V10.3027H154.746C158.649 10.3027 160.299 13.1054 160.299 15.8817C160.299 18.3814 158.652 20.9059 155.99 21.2593L160.526 27.6984L156.88 27.6968ZM151.004 13.0559V18.7604H154.121C156.3 18.7604 157.213 17.5221 157.213 15.9321C157.213 14.3421 156.224 13.0559 154.526 13.0559H151.004Z" fill="white"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_209_1424">
+      <rect width="29" height="39" fill="white" transform="translate(0.533203)"/>
+    </clipPath>
+    <clipPath id="clip1_209_1424">
+      <rect width="112" height="18" fill="white" transform="translate(48.5332 10)"/>
+    </clipPath>
+  </defs>
+</svg>
+</a>
+        </div>
+
+        <nav class="header-nav grid">
+          <div class="inner-wrap">
+            <ul class="header-nav--list grid">
+              <a href="https://ponder.io/" class="mobile-logo">
+                <svg width="29" height="39" viewBox="0 0 29 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.2104 18.3398H26.8516C28.0222 18.3398 28.9712 17.363 28.9712 16.1581V2.18176C28.9712 0.976808 28.0222 0 26.8516 0H22.2104C21.0398 0 20.0908 0.976808 20.0908 2.18176V16.1581C20.0908 17.363 21.0398 18.3398 22.2104 18.3398Z" fill="#EF5BA1"/>
+                <path d="M2.11961 39H6.76077C7.9314 39 8.88038 38.0232 8.88038 36.8182V22.8419C8.88038 21.637 7.9314 20.6602 6.76077 20.6602H2.11961C0.948981 20.6602 0 21.637 0 22.8419V36.8182C0 38.0232 0.948981 39 2.11961 39Z" fill="#00AD99"/>
+                <path d="M26.88 20.6606H13.3017C12.7399 20.6606 12.2011 20.8902 11.8036 21.299C11.4062 21.7077 11.1826 22.2621 11.1821 22.8404V36.8187C11.1821 37.3974 11.4054 37.9524 11.8029 38.3616C12.2004 38.7709 12.7395 39.0008 13.3017 39.001H26.88C27.1584 39.001 27.434 38.9445 27.6912 38.8349C27.9484 38.7252 28.1821 38.5644 28.3789 38.3618C28.5758 38.1591 28.7319 37.9186 28.8384 37.6538C28.9449 37.389 28.9996 37.1053 28.9996 36.8187V22.8404C28.9991 22.2621 28.7755 21.7077 28.3781 21.299C27.9806 20.8902 27.4418 20.6606 26.88 20.6606ZM23.1381 31.6632C23.1381 31.8303 23.1061 31.9958 23.0439 32.1503C22.9818 32.3047 22.8906 32.445 22.7758 32.5632C22.6609 32.6813 22.5246 32.7751 22.3745 32.839C22.2245 32.9029 22.0637 32.9358 21.9013 32.9357H18.3371C18.0092 32.9357 17.6947 32.8016 17.4629 32.563C17.231 32.3243 17.1008 32.0007 17.1008 31.6632V27.9945C17.1007 27.8273 17.1326 27.6618 17.1947 27.5073C17.2569 27.3529 17.3479 27.2125 17.4627 27.0943C17.5775 26.9761 17.7138 26.8823 17.8639 26.8183C18.0139 26.7544 18.1747 26.7214 18.3371 26.7214H21.9013C22.0637 26.7214 22.2246 26.7542 22.3746 26.8182C22.5247 26.8821 22.6611 26.9759 22.776 27.0941C22.8908 27.2124 22.9819 27.3527 23.0441 27.5072C23.1062 27.6617 23.1381 27.8273 23.1381 27.9945V31.6632Z" fill="#F68B33"/>
+                <path d="M15.6978 0H2.11962C1.84122 -7.47867e-09 1.56556 0.0564493 1.30836 0.166124C1.05117 0.275799 0.817477 0.436551 0.620647 0.639199C0.423818 0.841846 0.267699 1.08242 0.161207 1.34718C0.0547151 1.61194 -6.29457e-05 1.8957 5.42802e-08 2.18226V16.1606C5.42802e-08 16.7392 0.223316 17.2941 0.620817 17.7033C1.01833 18.1125 1.55746 18.3423 2.11962 18.3423H15.6978C16.26 18.3423 16.7991 18.1125 17.1966 17.7033C17.5941 17.2941 17.8174 16.7392 17.8174 16.1606V2.18226C17.8174 1.60357 17.5941 1.04858 17.1966 0.639345C16.7992 0.230106 16.26 0.00013218 15.6978 0ZM11.9555 11.0045C11.9555 11.1717 11.9236 11.3372 11.8615 11.4916C11.7994 11.6461 11.7083 11.7864 11.5935 11.9047C11.4787 12.0229 11.3424 12.1167 11.1924 12.1807C11.0423 12.2446 10.8815 12.2776 10.7191 12.2776H7.15448C6.99209 12.2776 6.83128 12.2446 6.68125 12.1807C6.53122 12.1167 6.39491 12.0229 6.2801 11.9047C6.16529 11.7864 6.07424 11.6461 6.01213 11.4916C5.95003 11.3372 5.9181 11.1717 5.91816 11.0045V7.33783C5.91816 7.00032 6.04842 6.67664 6.28027 6.43799C6.51213 6.19933 6.82659 6.06526 7.15448 6.06526H10.7191C11.047 6.06526 11.3615 6.19933 11.5933 6.43799C11.8252 6.67664 11.9555 7.00032 11.9555 7.33783V11.0045Z" fill="#33BBED"/>
+                </svg>
+              </a>
+                                  <li class="header-nav--item ">
+                  <a href="https://ponder.io/product/" class="header-nav--parent" target="_self">Product</a>
+
+                  
+                </li>
+                                                  <li class="header-nav--item  has-subnav">
+                  <a href="/why-ponder/" class="header-nav--parent" target="_self">Solution</a>
+
+                                      <div class="header-subnav--wrap">
+                      <ul class="header-subnav--list">
+                                                  <li class="header-subnav--item">
+                            <a href="/why-ponder/" class="header-subnav--link" target="_self" >Why Ponder?</a>
+                          </li>
+                                                  <li class="header-subnav--item">
+                            <a href="/case-studies" class="header-subnav--link" target="_self" >Case Studies</a>
+                          </li>
+                                              </ul>
+                    </div>
+                  
+                </li>
+                                                  <li class="header-nav--item ">
+                  <a href="https://ponder.io/community/" class="header-nav--parent" target="_self">Community</a>
+
+                  
+                </li>
+                                                  <li class="header-nav--item  has-subnav">
+                  <a href="https://ponder.io/blog/" class="header-nav--parent" target="_self">Resources</a>
+
+                                      <div class="header-subnav--wrap">
+                      <ul class="header-subnav--list">
+                                                  <li class="header-subnav--item">
+                            <a href="https://ponder.io/blog/" class="header-subnav--link" target="_self" >Blog</a>
+                          </li>
+                                                  <li class="header-subnav--item">
+                            <a href="http://docs.ponder.io" class="header-subnav--link" target="_self" >Docs</a>
+                          </li>
+                                                  <li class="header-subnav--item">
+                            <a href="https://docs.ponder.io/getting_started/quickstart.html" class="header-subnav--link" target="_self" >Getting Started </a>
+                          </li>
+                                                  <li class="header-subnav--item">
+                            <a href="https://docs.ponder.io/getting_started/example.html" class="header-subnav--link" target="_self" >Examples</a>
+                          </li>
+                                              </ul>
+                    </div>
+                  
+                </li>
+                                                  <li class="header-nav--item  has-subnav">
+                  <a href="https://ponder.io/company/" class="header-nav--parent" target="_self">Company</a>
+
+                                      <div class="header-subnav--wrap">
+                      <ul class="header-subnav--list">
+                                                  <li class="header-subnav--item">
+                            <a href="https://ponder.io/company/" class="header-subnav--link" target="_self" >About us </a>
+                          </li>
+                                                  <li class="header-subnav--item">
+                            <a href="https://ponder.io/contact/" class="header-subnav--link" target="_self" >Contact</a>
+                          </li>
+                                              </ul>
+                    </div>
+                  
+                </li>
+                                          </ul>
+            <a href="https://app.ponder.io/signup" class="btn">Try Ponder</a>
+          </div>
+        </nav>
+
+        <div id="hamburger" class="hamburger">
+          <div>
+            <span class="line-1"></span>
+            <span class="line-2"></span>
+            <span class="line-3"></span>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+
+    <div class="max-container site-container">
+
+<div class="blog-detail--bg">
+      <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="" data-lazy-src="https://ponder.io/wp-content/themes/ponder/img/blog/blog-detail-white.jpg"><noscript><img src="https://ponder.io/wp-content/themes/ponder/img/blog/blog-detail-white.jpg" alt=""></noscript>
+  </div>
+
+<main class="blog-detail--main">
+
+  <section class="blog-detail--title">
+    <div class="container">
+
+      <h1>Python for Finance: Pandas Resample, Groupby, and Rolling</h1>
+    </div>
+  </section>
+
+  <section class="blog-detail--wrap">
+    <div class="container">
+
+      <div class="blog-detail--content">
+        <div class="author">
+          <div class="author-info">
+                          <p class="name">
+                Matt Harrison              </p>
+                        <p class="date">
+              May 31, 2023                              <span class="timing"><span class="span-reading-time rt-reading-time"><span class="rt-label rt-prefix"></span> <span class="rt-time"> 14</span> <span class="rt-label rt-postfix"></span></span> min read</span>
+                          </p>
+          </div>
+          <span class="cat">Articles</span>
+        </div>
+
+        <div class="main-wrap" id="blog-detail-main-content">
+          <div class="content-wrap">
+            <div class="image">
+              <img class="blog-detail-featured" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Python for Finance: Pandas Resample, Groupby, and Rolling image" data-lazy-src="https://ponder.io/wp-content/uploads/2023/05/3879299914_Bank-in-NYC_0.2-_-Line-chart-with-financial-time-s_xl-beta-v2-2-2.png"><noscript><img class="blog-detail-featured" src="https://ponder.io/wp-content/uploads/2023/05/3879299914_Bank-in-NYC_0.2-_-Line-chart-with-financial-time-s_xl-beta-v2-2-2.png" alt="Python for Finance: Pandas Resample, Groupby, and Rolling image"></noscript>
+            </div>
+
+            <div class="copy">
+
+              
+              
+<p>Welcome back! Today we will explore how you can leverage pandas to understand trends in times series data quickly, with a particular focus on time series methods like pandas resample, grouping by dates, and performing rolling operations to smooth out the results. Along the way, I might grumble a bit (I&#8217;d like to think that the grey strands in my beard are from wisdom and not fighting with a computer), but I intend to give you some superpowers.</p>
+
+
+
+<p>If you work with time series data, you will want to understand pandas resample, grouping, and rolling, as they will make your life much easier. </p>
+
+
+
+<p>We will be running our example today with Ponder. Ponder lets you run pandas directly in your data warehouse. Throughout this post, you will see that you can continue writing your code in pandas with Ponder, while you get the scalability and security benefits that come with your data warehouse. You can learn more about Ponder in our&nbsp;<a href="https://ponder.io/ponder-in-public-beta-data-science-in-your-data-warehouse/">recent blogpost</a>&nbsp;and&nbsp;<a href="https://app.ponder.io/signup">sign up here</a>&nbsp;to try out Ponder today.</p>
+
+
+<p></p>
+<div class="newslatter-wrapper">
+<div class="newslatter">
+<h2>Try Ponder Today</h2>
+<p style="margin-right: 50px;">Start running pandas and NumPy in your database within minutes!</p>
+</div>
+<p><a class="big-btn btn" style="color: white;" href="https://app.ponder.io/signup">Get started</a></p>
+</div>
+
+
+<p>Let&#8217;s start by picking a dataset that might be relevant considering recent news&#8230; bank failures.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-data-overview-fdic-bankfind-suite">Data Overview: FDIC BankFind Suite</h2>
+
+
+
+<p>In recent years, the banking sector in the United States has witnessed many financial institution failures, leading to substantial economic losses and systemic risks. The Federal Deposit Insurance Corporation (FDIC) bank failure data provides valuable insights into the underlying causes of these failures and helps develop effective risk management and regulatory compliance strategies. By exploring this data with the aid of the popular data analysis library, pandas, one can identify patterns and trends, prepare data for modeling, and visualize findings effectively.</p>
+
+
+
+<p><a href="https://banks.data.fdic.gov/bankfind-suite/">BankFind Suite</a> is a comprehensive database provided by the FDIC, which allows users to search for current and former FDIC-insured banking institutions based on name, FDIC certificate number, website, or location. This tool offers detailed information on an institution&#8217;s financial history and trends, enabling users to track the performance of individual institutions, groups of institutions, or the industry as a whole.</p>
+
+
+
+<p>Let&#8217;s use the Bank Failure data to explore. I will download the data from 1934 to 2023 containing over 4000 entries.</p>
+
+
+
+<p>Ponder uses your data warehouse as an engine, so we first establish a connection with Snowflake in order to start querying the data.&nbsp;</p>
+
+
+<div class="inner_cell">
+<pre><code class="python">import json
+import modin.pandas as pd
+import ponder
+import snowflake.connector
+
+#Initalize Ponder
+ponder.init()
+# Load in your credentials
+with open(&#039;cred.json&#039;) as fin:
+    kw = json.load(fin)
+# Create a Snowflake connection
+db_con = snowflake.connector.connect(**kw)</code></pre>
+</div>
+<div class="inner_cell">
+<pre><code class="python">df = pd.read_sql(&#039;bankfail&#039;, con=db_con)
+df</code></pre>
+</div>
+<div class="inner_cell">
+<pre><code class="bash">	CERT	CHCLASS1	CITYST			COST	FAILDATE	FIN	ID	NAME					QBFASSET	QBFDEP		RESTYPE	RESTYPE1	SAVR
+0	15426.0	NM		ALMENA, KS		16806.0	10/23/2020	10538	4104	ALMENA STATE BANK			65733.0		64941.0		FAILURE	PA		DIF
+1	16748.0	NM		FORT WALTON BEACH, FL	7247.0	10/16/2020	10537	4103	FIRST CITY BANK OF FLORIDA		136566.0	133936.0	FAILURE	PA		DIF
+2	14361.0	NM		BARBOURSVILLE, WV	45913.0	4/3/2020	10536	4102	THE FIRST STATE BANK			151808.0	143102.0	FAILURE	PA		DIF
+3	18265.0	NM		ERICSON, NE		25293.0	2/14/2020	10535	4101	ERICSON STATE BANK			100879.0	95159.0		FAILURE	PA		DIF
+4	21111.0	N		NEWARK, NJ		1946.0	11/1/2019	10534	4100	CITY NATIONAL BANK OF NEW JERSEY	120574.0	111234.0	FAILURE	PA		DIF
+...	...	...		...			...	...		...	...	...					...		...		...	...		...
+4099	NaN	NM		LEWISPORT, KY		NaN	8/6/1934	0	137	BANK OF LEWISPORT			81.0		68.0		FAILURE	PO		BIF
+4100	NaN	N		LIMA, MT		NaN	7/18/1934	0	135	FIRST NATIONAL BANK OF LIMA		91.0		42.0		FAILURE	PO		BIF
+4101	NaN	NM		FLORENCE, IN		NaN	7/18/1934	0	136	FLORENCE DEPOSIT BANK			105.0		69.0		FAILURE	PO		BIF
+4102	NaN	NM		EAST PEORIA, IL		NaN	5/28/1934	0	133	FON DU LAC STATE BANK			374.0		238.0		FAILURE	PO		BIF
+4103	NaN	NM		PITTSBURGH, PA		NaN	4/19/1934	0	134	BANK OF AMERICA TRUST CO.		1435.0		1064.0		FAILURE	PO		BIF
+4104 rows × 13 columns</code></pre>
+</div>
+
+
+<p>It looks like my CSV export loaded ok. However, the existing column names are a little annoying. I&#8217;m going to clean them up.</p>
+
+
+
+<p>Here&#8217;s some code to rename the columns, create a <em>city</em> and <em>state</em> column, and convert the <em>date</em> column to a datetime type.</p>
+
+
+<div class="inner_cell">
+<pre><code class="python">colnames = {&#039;CERT&#039;: &#039;cert&#039;,
+&#039;CHCLASS1&#039;: &#039;charter_class&#039;,
+ &#039;CITYST&#039;: &#039;location&#039;,
+ &#039;COST&#039;: &#039;estimated_loss&#039;,
+ &#039;FAILDATE&#039;: &#039;effective_date&#039;,
+ &#039;FIN&#039;: &#039;fin&#039;,
+ &#039;ID&#039;: &#039;id&#039;,
+ &#039;NAME&#039;: &#039;institution&#039;,
+ &#039;QBFASSET&#039;: &#039;total_assets&#039;,
+ &#039;QBFDEP&#039;: &#039;total_deposits&#039;,
+ &#039;RESTYPE&#039;: &#039;resolution&#039;,
+ &#039;RESTYPE1&#039;: &#039;transaction_type&#039;,
+ &#039;SAVR&#039;: &#039;insurance_fund&#039;}
+
+
+def tweak_bank(df):
+  return (df
+          .assign(FAILDATE=pd.to_datetime(df.FAILDATE, format=&#039;%m/%d/%Y&#039;),
+                  city=df.CITYST.str.split(&#039;,&#039;).str[0],
+                  state=df.CITYST.str.split(&#039;,&#039;).str[1],
+                 )
+          .drop(columns=[&#039;CITYST&#039;])
+          .rename(columns=colnames)
+         )
+
+bank = tweak_bank(df)
+bank</code></pre>
+</div>
+<div class="inner_cell">
+<pre><code class="bash">	cert	charter_class	estimated_loss	effective_date	fin	id	institution				total_assets	total_deposits	resolution	transaction_type	insurance_fund	city			state
+0	15426.0	NM		16806.0		2020-10-23	10538	4104	ALMENA STATE BANK			65733.0		64941.0		FAILURE		PA			DIF		ALMENA			KS
+1	16748.0	NM		7247.0		2020-10-16	10537	4103	FIRST CITY BANK OF FLORIDA		136566.0	133936.0	FAILURE		PA			DIF		FORT WALTON BEACH	FL
+2	14361.0	NM		45913.0		2020-04-03	10536	4102	THE FIRST STATE BANK			151808.0	143102.0	FAILURE		PA			DIF		BARBOURSVILLE		WV
+3	18265.0	NM		25293.0		2020-02-14	10535	4101	ERICSON STATE BANK			100879.0	95159.0		FAILURE		PA			DIF		ERICSON			NE
+4	21111.0	N		1946.0		2019-11-01	10534	4100	CITY NATIONAL BANK OF NEW JERSEY	120574.0	111234.0	FAILURE		PA			DIF		NEWARK			NJ
+...	...	...		...		...		...	...	...					...		...		...		...			...		...			...
+4099	NaN	NM		NaN		1934-08-06	0	137	BANK OF LEWISPORT			81.0		68.0		FAILURE		PO			BIF		LEWISPORT		KY
+4100	NaN	N		NaN		1934-07-18	0	135	FIRST NATIONAL BANK OF LIMA		91.0		42.0		FAILURE		PO			BIF		LIMA			MT
+4101	NaN	NM		NaN		1934-07-18	0	136	FLORENCE DEPOSIT BANK			105.0		69.0		FAILURE		PO			BIF		FLORENCE		IN
+4102	NaN	NM		NaN		1934-05-28	0	133	FON DU LAC STATE BANK			374.0		238.0		FAILURE		PO			BIF		EAST PEORIA		IL
+4103	NaN	NM		NaN		1934-04-19	0	134	BANK OF AMERICA TRUST CO.		1435.0		1064.0		FAILURE		PO			BIF		PITTSBURGH		PA
+4104 rows × 14 columns</code></pre>
+</div>
+
+
+<p>Not bad. This is going to be great data for learning pandas resample, groupby, and rolling.</p>
+
+
+<div class="newslatter-wrapper">
+<div class="newslatter">
+<h2>Try Ponder Today</h2>
+<p style="margin-right: 50px;">Start running your Python data science workflows in your database within minutes!</p>
+</div>
+<p><a class="big-btn btn" style="color:white" href="https://app.ponder.io/signup">Get started</a></p>
+</div>
+
+
+<h3 class="wp-block-heading" id="h-data-dictionary">Data Dictionary</h3>
+
+
+
+<p>Here is the description of the columns for those (like me) who aren&#8217;t subject matter experts. (All descriptions taken from <a href="https://banks.data.fdic.gov/bankfind-suite/failures/help#DEFINITIONS">here</a>.)</p>
+
+
+
+<ul>
+<li>cert &#8211; Certificate number assigned by FDIC to identify the institution</li>
+
+
+
+<li>charter_class &#8211; The FDIC assigns classification codes indicating an institution&#8217;s charter type (commercial bank, savings bank, or savings association), its chartering agent (state or federal government), its Federal Reserve membership status (member or nonmember), and its primary federal regulator (state-chartered institutions are subject to both federal and state supervision). These codes are:
+<ul>
+<li>N National chartered commercial bank supervised by the Office of the Comptroller of the</li>
+
+
+
+<li>SM State charter Fed member commercial bank supervised by the Federal Reserve</li>
+
+
+
+<li>NM State charter Fed nonmember commercial bank supervised by the FDIC</li>
+
+
+
+<li>SA State or federal charter savings association supervised by the Office of Thrift Supervision or Office of the Comptroller of the Currency</li>
+
+
+
+<li>SB State charter savings bank supervised by the FDIC</li>
+</ul>
+</li>
+
+
+
+<li>estimated_loss &#8211; the difference between the amount disbursed from the Deposit Insurance Fund (DIF) to cover obligations to insured depositors and the amount estimated to be ultimately recovered from the liquidation of the receivership estate. Estimated losses reflect unpaid principal amounts deemed unrecoverable and do not reflect interest that may be due on the DIF&#8217;s administrative or subrogated claims should its principal be repaid in full.</li>
+
+
+
+<li>effective_date &#8211; date of failure.</li>
+
+
+
+<li>fin &#8211; Financial institute number. Another unique identifier.</li>
+
+
+
+<li>id &#8211; Institution directory number</li>
+
+
+
+<li>name &#8211; Legal name of the institution.</li>
+
+
+
+<li>total_assets &#8211; The Total assets owned by the institution, including cash, loans, securities, bank premises, and other assets as of the last Call Report or Thrift Financial Report.</li>
+
+
+
+<li>total_deposits &#8211; Total including demand deposits, money market deposits, other savings deposits, time deposits and deposits in foreign offices as of the last Call Report.</li>
+
+
+
+<li>resolution &#8211; Failure stature. Failure or assistance by merging with other institution.</li>
+
+
+
+<li>transaction_type &#8211; Resolution type. Cat 1 &#8211; Institution&#8217;s charter survives. Cat 2 &#8211; Charter terminated. Cat 3 &#8211; Payout:
+<ul>
+<li>A/A &#8211; Cat1. (Assistance Transactions). Assistance was provided to the acquirer, who purchased the entire institution.</li>
+
+
+
+<li>REP &#8211; Cat1. Re-privatization, management takeover with or without assistance at takeover, followed by a sale with or without additional assistance.</li>
+
+
+
+<li>P&amp;A &#8211; Cat2. Purchase and Assumption, where some or all of the deposits, certain other liabilities, and a portion of the assets (sometimes all of the assets) were sold to an acquirer. It was not determined if all the deposits (PA) or only the insured deposits (PI) were assumed.</li>
+
+
+
+<li>PA &#8211; Cat2. Purchase and Assumption, where the insured and uninsured deposits, certain other liabilities, and a portion of the assets were sold to an acquirer.</li>
+
+
+
+<li>PI &#8211; Cat2. Purchase and Assumption of the insured deposits only, where the traditional P&amp;A was modified so that the acquiring institution assumed only the insured deposits.</li>
+
+
+
+<li>IDT &#8211; Cat2. Insured deposit Transfer, where the acquiring institution served as a paying agent for the insurer, established accounts on their books for depositors and often acquired some assets as well.</li>
+
+
+
+<li>ABT &#8211; Cat2. Asset-backed transfer, an FSLIC transaction that is very similar to an IDT.</li>
+
+
+
+<li>MGR &#8211; Cat2.An institution where FSLIC took over management and generally provided financial assistance. FSLIC closed down before the institution was sold. transactions</li>
+
+
+
+<li>PO &#8211; Cat3 &#8211; Payout, where the insurer paid the depositors directly and placed the assets in a liquidating receivership.</li>
+</ul>
+</li>
+
+
+
+<li>insurance_fund &#8211; Insurance fund.</li>
+</ul>
+
+
+
+
+
+<h2 class="wp-block-heading" id="h-counts-of-failures-by-year">Counts of failures by year</h2>
+
+
+
+<p>Let&#8217;s use pandas to find the count of failures by year.</p>
+
+
+
+<p>When I hear the words &#8220;by year,&#8221; I immediately think we need to group this data by year. This is like one of those word math problems that everyone hated in junior high until they understood how to convert the words to math. The same thing happens here. When your boss tells you they want &#8220;failures by year,&#8221; you should think, &#8220;I&#8217;m going to use the <em>year</em> column in the pandas groupby method.&#8221;</p>
+
+
+<pre class="inline">In this case, we don't have a <em>year</em> column. But due to the magic of datetime columns, we can access the year through the <code class="language-python light hljs">.dt</code> accessor.</pre>
+<div class="inner_cell">
+<pre><code class="python">bank.effective_date</code></pre>
+</div>
+<div class="inner_cell">
+<pre><code class="bash">0      2020-10-23
+1      2020-10-16
+2      2020-04-03
+3      2020-02-14
+4      2019-11-01
+          ...    
+4099   1934-08-06
+4100   1934-07-18
+4101   1934-07-18
+4102   1934-05-28
+4103   1934-04-19
+Name: effective_date, Length: 4104, dtype: datetime64[ns]</code></pre>
+</div>
+<div class="inner_cell">
+<pre><code class="python">(bank
+ .groupby(bank.effective_date.dt.year)
+ .size()
+)</code></pre>
+</div>
+<div class="inner_cell">
+<pre><code class="bash">effective_date
+1934     9
+1935    25
+1936    69
+1937    75
+1938    74
+        ..
+2015     8
+2016     5
+2017     8
+2019     4
+2020     4
+Length: 84, dtype: int64</code></pre>
+</div>
+
+
+<p>This is ok. I would prefer a visualization to this table of data. Let&#8217;s try a bar chart.</p>
+
+
+<div class="inner_cell">
+<pre><code class="python">(bank
+ .groupby(bank.effective_date.dt.year)
+ .size()
+ .plot.bar()
+)</code></pre>
+</div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img fetchpriority="high" decoding="async" width="556" height="454" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20556%20454'%3E%3C/svg%3E" alt="" class="wp-image-5184" data-lazy-srcset="https://ponder.io/wp-content/uploads/2023/06/matt_plot_1.png 556w, https://ponder.io/wp-content/uploads/2023/06/matt_plot_1-300x245.png 300w" data-lazy-sizes="(max-width: 556px) 100vw, 556px" data-lazy-src="https://ponder.io/wp-content/uploads/2023/06/matt_plot_1.png" /><noscript><img fetchpriority="high" decoding="async" width="556" height="454" src="https://ponder.io/wp-content/uploads/2023/06/matt_plot_1.png" alt="" class="wp-image-5184" srcset="https://ponder.io/wp-content/uploads/2023/06/matt_plot_1.png 556w, https://ponder.io/wp-content/uploads/2023/06/matt_plot_1-300x245.png 300w" sizes="(max-width: 556px) 100vw, 556px" /></noscript></figure></div>
+
+
+<p>This is a start, but the x-axis is not happy. Just be aware that if you intend on making bar plots with pandas, it converts the index to categories. In this case, the dates are converted to strings. This makes me sad, but not every library is perfect.</p>
+
+
+
+<p><a href="https://github.com/pandas-dev/pandas/issues/17001">https://github.com/pandas-dev/pandas/issues/17001</a></p>
+
+
+
+<p>Let&#8217;s try and make a line plot instead.</p>
+
+
+<div class="inner_cell">
+<pre><code class="python">(bank
+ .groupby(bank.effective_date.dt.year)
+ .size()
+ .plot()
+)</code></pre>
+</div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="552" height="433" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20552%20433'%3E%3C/svg%3E" alt="" class="wp-image-5185" data-lazy-srcset="https://ponder.io/wp-content/uploads/2023/06/matt_plot_2.png 552w, https://ponder.io/wp-content/uploads/2023/06/matt_plot_2-300x235.png 300w" data-lazy-sizes="(max-width: 552px) 100vw, 552px" data-lazy-src="https://ponder.io/wp-content/uploads/2023/06/matt_plot_2.png" /><noscript><img decoding="async" width="552" height="433" src="https://ponder.io/wp-content/uploads/2023/06/matt_plot_2.png" alt="" class="wp-image-5185" srcset="https://ponder.io/wp-content/uploads/2023/06/matt_plot_2.png 552w, https://ponder.io/wp-content/uploads/2023/06/matt_plot_2-300x235.png 300w" sizes="(max-width: 552px) 100vw, 552px" /></noscript></figure></div>
+
+
+<p>This looks good. Line plots in pandas (unlike bar plots) respect dates in the index.</p>
+
+
+
+<p>Now let&#8217;s jump into grouping functionality that is time-series specific.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-using-offset-aliases-with-pandas-resample">Using Offset Aliases with Pandas Resample</h2>
+
+
+
+<p>Hidden away in the pandas documentation is a mention of&nbsp;<em>offset aliases</em>. (Sadly, these are not accessible from the docstrings inside of Jupyter, which is one lament I have with pandas otherwise excellent documentation).</p>
+
+
+
+<p>You can find them <a href="https://pandas.pydata.org/docs/user_guide/timeseries.html#dateoffset-objects">here</a>, or documented in my book,&nbsp;<em>Effective Pandas</em>.</p>
+
+
+<pre class="inline">In short, <code class="language-python light hljs">Y</code>, <code class="language-python light hljs">Q</code>, <code class="language-python light hljs">M</code>, <code class="language-python light hljs">W</code>, and <code class="language-python light hljs">D</code> mean year, quarter, month, week, and day respectively. If you memorize these single letter shortcuts, the pandas resample method, or the <code class="language-python light hljs">pd.Grouper</code> class, you can quickly aggregate date information by different time intervals.</pre>
+<pre class="inline">Let's try and view failures by month using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.resample.html">pandas resample method</a>. Pandas resample is powerful because it lets you convert time series data with one time interval into time series data with different time intervals. You can upsample so you have more rows over shorter intervals, or downsample so you have fewer rows over longer intervals. The key to using this method is sticking a date column into the index and then calling <code class="language-python light hljs">.resample</code> instead of <code class="language-python light hljs">.groupby</code>:</pre>
+<div class="inner_cell">
+<pre><code class="python">(bank
+ .set_index(&#039;effective_date&#039;)
+ .resample(&#039;M&#039;)
+ .size()
+)</code></pre>
+</div>
+<div class="inner_cell">
+<pre><code class="bash">effective_date
+1934-04-30    1
+1934-05-31    1
+1934-07-31    2
+1934-08-31    1
+1934-09-30    1
+             ..
+2019-10-31    2
+2019-11-30    1
+2020-02-29    1
+2020-04-30    1
+2020-10-31    2
+Length: 540, dtype: int64</code></pre>
+</div>
+<pre class="inline">Notice the index in the resulting Series. Each entry ends on the last day of the month. This is because we passed the <code class="language-python light hljs">M</code> (month) offset alias into the pandas resample method.</pre>
+<pre class="inline">I generally plot this by chaining on a call to <code class="language-python light hljs">.plot</code>. This will plot the date in the x-axis and draw the values in the y-axis.</pre>
+<div class="inner_cell">
+<pre><code class="python">(bank
+ .set_index(&#039;effective_date&#039;)
+ .resample(&#039;M&#039;)
+ .size()
+ .plot()
+)</code></pre>
+</div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="552" height="405" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20552%20405'%3E%3C/svg%3E" alt="" class="wp-image-5187" data-lazy-srcset="https://ponder.io/wp-content/uploads/2023/06/matt_plot_3.png 552w, https://ponder.io/wp-content/uploads/2023/06/matt_plot_3-300x220.png 300w" data-lazy-sizes="(max-width: 552px) 100vw, 552px" data-lazy-src="https://ponder.io/wp-content/uploads/2023/06/matt_plot_3.png" /><noscript><img decoding="async" width="552" height="405" src="https://ponder.io/wp-content/uploads/2023/06/matt_plot_3.png" alt="" class="wp-image-5187" srcset="https://ponder.io/wp-content/uploads/2023/06/matt_plot_3.png 552w, https://ponder.io/wp-content/uploads/2023/06/matt_plot_3-300x220.png 300w" sizes="(max-width: 552px) 100vw, 552px" /></noscript></figure></div>
+
+
+<h2 class="wp-block-heading" id="h-smoothing-by-rougher-aggregations-using-pandas-resample">Smoothing By Rougher Aggregations Using Pandas Resample</h2>
+
+
+
+<p>Let&#8217;s try something a little fancier. We will make a function that plots the monthly failures (which we already saw was bumpy) and then plot the yearly aggregation on top.</p>
+
+
+<pre class="inline">I'll use the&nbsp;<code class="language-python light hljs">.pipe</code>&nbsp;method to refactor the plotting logic into a single function.</pre>
+<div class="inner_cell">
+<pre><code class="python">import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(10,4))
+def plot_monthly_and_yearly(df, ax):
+    (df
+      .resample(&#039;M&#039;)
+      .size()
+      .plot(ax=ax, label=&#039;Monthly&#039;)
+    )
+    (df
+      .resample(&#039;Y&#039;)
+      .size()
+      .plot(ax=ax, label=&#039;Annual&#039;)
+    )
+    ax.legend()
+    return df
+
+(bank
+ .set_index(&#039;effective_date&#039;)
+ .pipe(plot_monthly_and_yearly, ax=ax)
+)</code></pre>
+</div>
+<div class="inner_cell">
+<pre><code class="bash">		cert	charter_class	estimated_loss	fin	id	institution				total_assets	total_deposits	resolution	transaction_type	insurance_fund	city			state
+effective_date													
+2020-10-23	15426.0	NM		16806.0		10538	4104	ALMENA STATE BANK			65733.0		64941		FAILURE		PA			DIF		ALMENA			KS
+2020-10-16	16748.0	NM		7247.0		10537	4103	FIRST CITY BANK OF FLORIDA		136566.0	133936		FAILURE		PA			DIF		FORT WALTON BEACH	FL
+2020-04-03	14361.0	NM		45913.0		10536	4102	THE FIRST STATE BANK			151808.0	143102		FAILURE		PA			DIF		BARBOURSVILLE		WV
+2020-02-14	18265.0	NM		25293.0		10535	4101	ERICSON STATE BANK			100879.0	95159		FAILURE		PA			DIF		ERICSON			NE
+2019-11-01	21111.0	N		1946.0		10534	4100	CITY NATIONAL BANK OF NEW JERSEY	120574.0	111234		FAILURE		PA			DIF		NEWARK			NJ
+...		...	...		...		...	...	...					...		...		...		...			...		...			...
+1934-08-06	NaN	NM		NaN		0	137	BANK OF LEWISPORT			81.0		68		FAILURE		PO			BIF		LEWISPORT		KY
+1934-07-18	NaN	N		NaN		0	135	FIRST NATIONAL BANK OF LIMA		91.0		42		FAILURE		PO			BIF		LIMA			MT
+1934-07-18	NaN	NM		NaN		0	136	FLORENCE DEPOSIT BANK			105.0		69		FAILURE		PO			BIF		FLORENCE		IN
+1934-05-28	NaN	NM		NaN		0	133	FON DU LAC STATE BANK			374.0		238		FAILURE		PO			BIF		EAST PEORIA		IL
+1934-04-19	NaN	NM		NaN		0	134	BANK OF AMERICA TRUST CO.		1435.0		1064		FAILURE		PO			BIF		PITTSBURGH		PA
+4104 rows x 13 columns</code></pre>
+</div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="832" height="351" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20832%20351'%3E%3C/svg%3E" alt="" class="wp-image-5212" data-lazy-srcset="https://ponder.io/wp-content/uploads/2023/06/monthly_annual.png 832w, https://ponder.io/wp-content/uploads/2023/06/monthly_annual-300x127.png 300w, https://ponder.io/wp-content/uploads/2023/06/monthly_annual-768x324.png 768w" data-lazy-sizes="(max-width: 832px) 100vw, 832px" data-lazy-src="https://ponder.io/wp-content/uploads/2023/06/monthly_annual.png" /><noscript><img decoding="async" width="832" height="351" src="https://ponder.io/wp-content/uploads/2023/06/monthly_annual.png" alt="" class="wp-image-5212" srcset="https://ponder.io/wp-content/uploads/2023/06/monthly_annual.png 832w, https://ponder.io/wp-content/uploads/2023/06/monthly_annual-300x127.png 300w, https://ponder.io/wp-content/uploads/2023/06/monthly_annual-768x324.png 768w" sizes="(max-width: 832px) 100vw, 832px" /></noscript></figure></div>
+
+
+<h2 class="wp-block-heading" id="h-resolution-type-over-time">Resolution Type Over Time</h2>
+
+
+<pre class="inline">I want to talk about one more feature of pandas. The <code class="language-python light hljs">pd.Grouper</code> class. I use this class to group by different frequencies of a date column without having to stick the date in the index and call pandas resample. You might ask, why?</pre>
+<pre class="inline">The pandas resample method only allows us to have a single grouping. If you have played around with <code class="language-python light hljs">.groupby</code>, then you know that you can provide multiple columns or series to groupby. In this example, let's assume this word problem:</pre>
+
+
+<p>What are the counts of the different resolution types by month?</p>
+
+
+
+<p>This is a little tricky. We have &#8220;by month,&#8221; so we want to group by month, but we also really have &#8220;size by resolution type by month.&#8221;</p>
+
+
+
+<p>A first stab might look like this:</p>
+
+
+<div class="inner_cell">
+<pre><code class="python">(bank
+ .groupby([bank.effective_date.dt.month, &#039;resolution&#039;])
+ .size()
+)</code></pre>
+</div>
+<div class="inner_cell">
+<pre><code class="bash">effective_date  resolution
+1               ASSISTANCE     22
+                FAILURE       274
+2               ASSISTANCE     26
+                FAILURE       302
+3               ASSISTANCE     32
+                FAILURE       443
+4               ASSISTANCE     87
+                FAILURE       328
+5               ASSISTANCE     30
+                FAILURE       283
+6               ASSISTANCE     28
+                FAILURE       298
+7               ASSISTANCE     48
+                FAILURE       359
+8               ASSISTANCE     62
+                FAILURE       280
+9               ASSISTANCE     57
+                FAILURE       219
+10              ASSISTANCE     47
+                FAILURE       284
+11              ASSISTANCE     30
+                FAILURE       212
+12              ASSISTANCE    110
+                FAILURE       243
+dtype: int64</code></pre>
+</div>
+<pre class="inline">This sort of works if we want to know how many banks failed in December. But we want monthly data over time. Because we also want to group by resolution, we can't use the pandas resample method. This is where <code class="language-python light hljs">pd.Grouper</code> comes in.</pre>
+
+
+<p>We provide the name of a datetime column and a frequency (this is that offset alias that we talked about above). The code looks like this:</p>
+
+
+<div class="inner_cell">
+<pre><code class="python">(bank
+ .groupby([pd.Grouper(key=&#039;effective_date&#039;, freq=&#039;M&#039;),
+           &#039;resolution&#039;])
+ .size()
+)</code></pre>
+</div>
+<div class="inner_cell">
+<pre><code class="bash">effective_date  resolution
+1934-04-30      FAILURE       1
+1934-05-31      FAILURE       1
+1934-07-31      FAILURE       2
+1934-08-31      FAILURE       1
+1934-09-30      FAILURE       1
+                             ..
+2019-10-31      FAILURE       2
+2019-11-30      FAILURE       1
+2020-02-29      FAILURE       1
+2020-04-30      FAILURE       1
+2020-10-31      FAILURE       2
+Length: 635, dtype: int64</code></pre>
+</div>
+<pre class="inline">By now, you know that I want to plot this. However, tacking on <code class="language-python light hljs">.plot</code> is unsatisfying as we have a hierarchical index and this sticks both date and resolution as a tuple in the x-axis:</pre>
+<div class="inner_cell">
+<pre><code class="python">(bank
+ .groupby([pd.Grouper(key=&#039;effective_date&#039;, freq=&#039;M&#039;),
+           &#039;resolution&#039;])
+ .size()
+ .plot()
+)</code></pre>
+</div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="668" height="433" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20668%20433'%3E%3C/svg%3E" alt="" class="wp-image-5190" data-lazy-srcset="https://ponder.io/wp-content/uploads/2023/06/matt_plot_5.png 668w, https://ponder.io/wp-content/uploads/2023/06/matt_plot_5-300x194.png 300w" data-lazy-sizes="(max-width: 668px) 100vw, 668px" data-lazy-src="https://ponder.io/wp-content/uploads/2023/06/matt_plot_5.png" /><noscript><img decoding="async" width="668" height="433" src="https://ponder.io/wp-content/uploads/2023/06/matt_plot_5.png" alt="" class="wp-image-5190" srcset="https://ponder.io/wp-content/uploads/2023/06/matt_plot_5.png 668w, https://ponder.io/wp-content/uploads/2023/06/matt_plot_5-300x194.png 300w" sizes="(max-width: 668px) 100vw, 668px" /></noscript></figure></div>
+
+<pre class="inline">What I want to do instead is <em>unstack</em> the innermost index, the <em>resolution</em> index. The <code class="language-python light hljs">.unstack</code> method will pull out the inner index by default and stick it up into the columns. Now we have monthly dates in the index and a column for each resolution type.</pre>
+<div class="inner_cell">
+<pre><code class="python">(bank
+ .groupby([pd.Grouper(key=&#039;effective_date&#039;, freq=&#039;M&#039;),
+           &#039;resolution&#039;])
+ .size()
+ .unstack(level=1)
+)</code></pre>
+</div>
+<div class="inner_cell">
+<pre><code class="bash">		__reduced___ASSISTANCE	__reduced___FAILURE
+effective_date		
+1934-04-30	NaN			1
+1934-05-31	NaN			1
+1934-07-31	NaN			2
+1934-08-31	NaN			1
+1934-09-30	NaN			1
+...		...			...
+2019-10-31	NaN			2
+2019-11-30	NaN			1
+2020-02-29	NaN			1
+2020-04-30	NaN			1
+2020-10-31	NaN			2
+540 rows x 2 columns</code></pre>
+</div>
+
+
+<p>If we plot this, we will get a line for each resolution type over time. It looks like the <em>FAILURE</em> resolution is much more common since 1989.</p>
+
+
+<div class="inner_cell">
+<pre><code class="python">def fix_cols(name):
+    return name.replace(&#039;__reduced___&#039;, &#039;&#039;)
+
+(bank
+ .groupby([pd.Grouper(key=&#039;effective_date&#039;, freq=&#039;M&#039;),
+           &#039;resolution&#039;])
+ .size()
+ .unstack(level=1)
+ .fillna(0)
+ .rename(columns=fix_cols)
+ .plot()
+)</code></pre>
+</div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="552" height="405" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20552%20405'%3E%3C/svg%3E" alt="" class="wp-image-5197" data-lazy-srcset="https://ponder.io/wp-content/uploads/2023/06/matt_image_10.png 552w, https://ponder.io/wp-content/uploads/2023/06/matt_image_10-300x220.png 300w" data-lazy-sizes="(max-width: 552px) 100vw, 552px" data-lazy-src="https://ponder.io/wp-content/uploads/2023/06/matt_image_10.png" /><noscript><img decoding="async" width="552" height="405" src="https://ponder.io/wp-content/uploads/2023/06/matt_image_10.png" alt="" class="wp-image-5197" srcset="https://ponder.io/wp-content/uploads/2023/06/matt_image_10.png 552w, https://ponder.io/wp-content/uploads/2023/06/matt_image_10-300x220.png 300w" sizes="(max-width: 552px) 100vw, 552px" /></noscript></figure></div>
+
+
+<p>Let&#8217;s do a 12-month rolling average to smooth this out a bit.</p>
+
+
+<div class="inner_cell">
+<pre><code class="python">(bank
+ .groupby([pd.Grouper(key=&#039;effective_date&#039;, freq=&#039;M&#039;),
+           &#039;resolution&#039;])
+ .size()
+ .unstack(level=1)
+ .rename(columns=fix_cols)
+ .fillna(0)
+ .rolling(12)
+ .mean()
+ .plot()
+)</code></pre>
+</div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="543" height="405" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20543%20405'%3E%3C/svg%3E" alt="" class="wp-image-5200" data-lazy-srcset="https://ponder.io/wp-content/uploads/2023/06/matt_12month_rolling.png 543w, https://ponder.io/wp-content/uploads/2023/06/matt_12month_rolling-300x224.png 300w" data-lazy-sizes="(max-width: 543px) 100vw, 543px" data-lazy-src="https://ponder.io/wp-content/uploads/2023/06/matt_12month_rolling.png" /><noscript><img decoding="async" width="543" height="405" src="https://ponder.io/wp-content/uploads/2023/06/matt_12month_rolling.png" alt="" class="wp-image-5200" srcset="https://ponder.io/wp-content/uploads/2023/06/matt_12month_rolling.png 543w, https://ponder.io/wp-content/uploads/2023/06/matt_12month_rolling-300x224.png 300w" sizes="(max-width: 543px) 100vw, 543px" /></noscript></figure></div>
+
+
+<p>Below I plot the yearly resolution size. Again, you can see that the basic shape is the same, but the yearly rolling average tells a better story.</p>
+
+
+<div class="inner_cell">
+<pre><code class="python">(bank
+ .groupby([pd.Grouper(key=&#039;effective_date&#039;, freq=&#039;Y&#039;),
+           &#039;resolution&#039;])
+ .size()
+ .unstack(level=1)
+ .rename(columns=fix_cols)
+ .fillna(0)
+ .plot()
+)</code></pre>
+</div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="552" height="405" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20552%20405'%3E%3C/svg%3E" alt="" class="wp-image-5202" data-lazy-srcset="https://ponder.io/wp-content/uploads/2023/06/matt_plot_yearly.png 552w, https://ponder.io/wp-content/uploads/2023/06/matt_plot_yearly-300x220.png 300w" data-lazy-sizes="(max-width: 552px) 100vw, 552px" data-lazy-src="https://ponder.io/wp-content/uploads/2023/06/matt_plot_yearly.png" /><noscript><img decoding="async" width="552" height="405" src="https://ponder.io/wp-content/uploads/2023/06/matt_plot_yearly.png" alt="" class="wp-image-5202" srcset="https://ponder.io/wp-content/uploads/2023/06/matt_plot_yearly.png 552w, https://ponder.io/wp-content/uploads/2023/06/matt_plot_yearly-300x220.png 300w" sizes="(max-width: 552px) 100vw, 552px" /></noscript></figure></div>
+
+
+<p>And finally, let&#8217;s look at the 12-month rolling average by resolution type.</p>
+
+
+<div class="inner_cell">
+<pre><code class="python">(bank
+ .groupby([pd.Grouper(key=&#039;effective_date&#039;, freq=&#039;M&#039;),
+           &#039;transaction_type&#039;])
+ .size()
+ .unstack(level=1)
+ .rename(columns=fix_cols)
+ .fillna(0)
+ .rolling(12)
+ .mean()
+ .plot()
+)</code></pre>
+</div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="543" height="405" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20543%20405'%3E%3C/svg%3E" alt="" class="wp-image-5206" data-lazy-srcset="https://ponder.io/wp-content/uploads/2023/06/matt_plot_resolution_type.png 543w, https://ponder.io/wp-content/uploads/2023/06/matt_plot_resolution_type-300x224.png 300w" data-lazy-sizes="(max-width: 543px) 100vw, 543px" data-lazy-src="https://ponder.io/wp-content/uploads/2023/06/matt_plot_resolution_type.png" /><noscript><img decoding="async" width="543" height="405" src="https://ponder.io/wp-content/uploads/2023/06/matt_plot_resolution_type.png" alt="" class="wp-image-5206" srcset="https://ponder.io/wp-content/uploads/2023/06/matt_plot_resolution_type.png 543w, https://ponder.io/wp-content/uploads/2023/06/matt_plot_resolution_type-300x224.png 300w" sizes="(max-width: 543px) 100vw, 543px" /></noscript></figure></div>
+
+
+<h2 class="wp-block-heading" id="h-now-you-have-pandas-resample-groupby-and-rolling-superpowers">Now You Have Pandas Resample, Groupby, and Rolling Superpowers</h2>
+
+
+
+<p>I hope that this blog post exposed you to the powerful time series functionality in pandas, particularly pandas resample, groupby, and rolling.</p>
+
+
+
+<p>Folks often ask me why I use pandas to manipulate my data. Could I do this in SQL? Yes&#8230; probably. But I&#8217;ve written enough SQL in my life to know that it wouldn&#8217;t be fun for me. Are you out of luck if your data is in a database or data warehouse? Nope, If you want to take advantage of this power for your data in Snowflake or BigQuery, <a href="https://app.ponder.io/signup">try Ponder today</a>! You get to leverage the easy syntax of pandas, but run it on your data warehouse.</p>
+
+
+<div class="cta-block">
+<h3>Just pip install Ponder and try it yourself!</h3>
+<p><a class="btn teal" href="https://app.ponder.io/signup">Get started</a>
+</p>
+</div>            </div>
+
+          </div>
+          <div class="rss-wrap">
+            <div class="inner-wrap">
+              <div class="rss" id="blog-detail-rail-nav">
+
+                <div class="icons-wrap">
+                  <div class="heateor_sss_sharing_container heateor_sss_horizontal_sharing" data-heateor-ss-offset="0" data-heateor-sss-href='https://ponder.io/python-for-finance-pandas-resample-groupby-and-rolling/'><div class="heateor_sss_sharing_ul"><a aria-label="Linkedin" class="heateor_sss_button_linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fponder.io%2Fpython-for-finance-pandas-resample-groupby-and-rolling%2F&title=Python%20for%20Finance%3A%20Pandas%20Resample%2C%20Groupby%2C%20and%20Rolling" title="Linkedin" rel="nofollow noopener" target="_blank" style="font-size:32px!important;box-shadow:none;display:inline-block;vertical-align:middle"><span class="heateor_sss_svg heateor_sss_s__default heateor_sss_s_linkedin" style="background-color:#0077b5;width:26px;height:26px;border-radius:999px;display:inline-block;opacity:1;float:left;font-size:32px;box-shadow:none;display:inline-block;font-size:16px;padding:0 4px;vertical-align:middle;background-repeat:repeat;overflow:hidden;padding:0;cursor:pointer;box-sizing:content-box"><svg style="display:block;border-radius:999px;" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 32 32"><path d="M6.227 12.61h4.19v13.48h-4.19V12.61zm2.095-6.7a2.43 2.43 0 0 1 0 4.86c-1.344 0-2.428-1.09-2.428-2.43s1.084-2.43 2.428-2.43m4.72 6.7h4.02v1.84h.058c.56-1.058 1.927-2.176 3.965-2.176 4.238 0 5.02 2.792 5.02 6.42v7.395h-4.183v-6.56c0-1.564-.03-3.574-2.178-3.574-2.18 0-2.514 1.7-2.514 3.46v6.668h-4.187V12.61z" fill="#767390"></path></svg></span></a><a aria-label="Twitter" class="heateor_sss_button_twitter" href="http://twitter.com/intent/tweet?text=Python%20for%20Finance%3A%20Pandas%20Resample%2C%20Groupby%2C%20and%20Rolling&url=https%3A%2F%2Fponder.io%2Fpython-for-finance-pandas-resample-groupby-and-rolling%2F" title="Twitter" rel="nofollow noopener" target="_blank" style="font-size:32px!important;box-shadow:none;display:inline-block;vertical-align:middle"><span class="heateor_sss_svg heateor_sss_s__default heateor_sss_s_twitter" style="background-color:#55acee;width:26px;height:26px;border-radius:999px;display:inline-block;opacity:1;float:left;font-size:32px;box-shadow:none;display:inline-block;font-size:16px;padding:0 4px;vertical-align:middle;background-repeat:repeat;overflow:hidden;padding:0;cursor:pointer;box-sizing:content-box"><svg style="display:block;border-radius:999px;" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="-4 -4 39 39"><path d="M28 8.557a9.913 9.913 0 0 1-2.828.775 4.93 4.93 0 0 0 2.166-2.725 9.738 9.738 0 0 1-3.13 1.194 4.92 4.92 0 0 0-3.593-1.55 4.924 4.924 0 0 0-4.794 6.049c-4.09-.21-7.72-2.17-10.15-5.15a4.942 4.942 0 0 0-.665 2.477c0 1.71.87 3.214 2.19 4.1a4.968 4.968 0 0 1-2.23-.616v.06c0 2.39 1.7 4.38 3.952 4.83-.414.115-.85.174-1.297.174-.318 0-.626-.03-.928-.086a4.935 4.935 0 0 0 4.6 3.42 9.893 9.893 0 0 1-6.114 2.107c-.398 0-.79-.023-1.175-.068a13.953 13.953 0 0 0 7.55 2.213c9.056 0 14.01-7.507 14.01-14.013 0-.213-.005-.426-.015-.637.96-.695 1.795-1.56 2.455-2.55z" fill="#767390"></path></svg></span></a><a aria-label="Facebook" class="heateor_sss_facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fponder.io%2Fpython-for-finance-pandas-resample-groupby-and-rolling%2F" title="Facebook" rel="nofollow noopener" target="_blank" style="font-size:32px!important;box-shadow:none;display:inline-block;vertical-align:middle"><span class="heateor_sss_svg" style="background-color:#3c589a;width:26px;height:26px;border-radius:999px;display:inline-block;opacity:1;float:left;font-size:32px;box-shadow:none;display:inline-block;font-size:16px;padding:0 4px;vertical-align:middle;background-repeat:repeat;overflow:hidden;padding:0;cursor:pointer;box-sizing:content-box"><svg style="display:block;border-radius:999px;" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="-5 -5 42 42"><path d="M17.78 27.5V17.008h3.522l.527-4.09h-4.05v-2.61c0-1.182.33-1.99 2.023-1.99h2.166V4.66c-.375-.05-1.66-.16-3.155-.16-3.123 0-5.26 1.905-5.26 5.405v3.016h-3.53v4.09h3.53V27.5h4.223z" fill="#767390"></path></svg></span></a></div><div class="heateorSssClear"></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="global--blog-cards">
+    <div class="container">
+
+      <div class="global--blog-cards-title">
+        <h2>Read more:</h2>
+      </div>
+
+      <div class="global--blog-cards-row">
+
+                      <a href="https://ponder.io/snowflake-to-acquire-ponder/" class="blog-card col">
+                <div class="image">
+                                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://ponder.io/wp-content/uploads/2023/10/announcement_featured_image-1024x536.png"><noscript><img src="https://ponder.io/wp-content/uploads/2023/10/announcement_featured_image-1024x536.png"></noscript>
+                </div>
+                <div class="content">
+                  <div class="info">
+                    <span class="cat" style="color:#f47813;background-color:#f4d4b7">News</span>
+                    <p>Oct 23, 2023</p>
+                  </div>
+                  <h3>🐼 ❤️ ❄️</h3>
+                  <p><p>We are excited to announce Snowflake’s intent to acquire Ponder to bring Ponder’s Python data science innovations to its customers and to accelerate the growth of the Modin community.</p>
+</p>
+                </div>
+              </a>
+                          <a href="https://ponder.io/professional-pandas-handling-missing-data-with-pandas-dropna/" class="blog-card col">
+                <div class="image">
+                                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://ponder.io/wp-content/uploads/2023/10/robert-linder-ovhr7rvcNdc-unsplash-1024x707.jpg"><noscript><img src="https://ponder.io/wp-content/uploads/2023/10/robert-linder-ovhr7rvcNdc-unsplash-1024x707.jpg"></noscript>
+                </div>
+                <div class="content">
+                  <div class="info">
+                    <span class="cat" style="color:#4edd96;background-color:#d2fef1">Articles</span>
+                    <p>Oct 3, 2023</p>
+                  </div>
+                  <h3>Professional Pandas: Handling Missing Data With Pandas Dropna</h3>
+                  <p><p>This is the fifth in a series of blog posts that teach how to write professional-quality pandas code. We start by discussing pandas dropna generally and going over a simple example. Then we talk about identifying missing values, when to drop data, and how to drop entire rows that are missing.</p>
+</p>
+                </div>
+              </a>
+                          <a href="https://ponder.io/how-to-use-pandas-resample-on-a-database/" class="blog-card col">
+                <div class="image">
+                                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://ponder.io/wp-content/uploads/2023/09/764941_A-panda-walks-along-the-top-of-a-mountain-with-jag_xl-1024-v1-0-1024x585.png"><noscript><img src="https://ponder.io/wp-content/uploads/2023/09/764941_A-panda-walks-along-the-top-of-a-mountain-with-jag_xl-1024-v1-0-1024x585.png"></noscript>
+                </div>
+                <div class="content">
+                  <div class="info">
+                    <span class="cat" style="color:#4edd96;background-color:#d2fef1">Articles</span>
+                    <p>Sep 19, 2023</p>
+                  </div>
+                  <h3>How To Use pandas resample on a Database</h3>
+                  <p><p>In this article, we describe pandas resample + provide some examples, and then show how you can use it at scale in your database.</p>
+</p>
+                </div>
+              </a>
+            
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+<section class="global--end-cap">
+    <div class="container">
+    <h2>Ready to level up your Pandas game?</h2>
+                    <a href="https://ponder.io/product/" target="_self" class="btn teal">Try Ponder now</a>
+                </div>
+    </section>
+</main>
+    </div> <!-- End max-container -->
+
+    
+    <div class="site-bg">
+      <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="" data-lazy-src="https://ponder.io/wp-content/themes/ponder/img/bg.webp"><noscript><img src="https://ponder.io/wp-content/themes/ponder/img/bg.webp" alt=""></noscript>
+    </div>
+
+    <div class="site-gradient-bg"></div>
+
+    <footer id="footer" class="footer" role="contentinfo">
+
+      <div class="container footer-container">
+
+        <div class="footer-info">
+          <a href="/">
+            <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" class="footer-logo" alt="Ponder Logo" data-lazy-src="https://ponder.io/wp-content/themes/ponder/inc/logo.svg" /><noscript><img src="https://ponder.io/wp-content/themes/ponder/inc/logo.svg" class="footer-logo" alt="Ponder Logo" /></noscript>
+          </a>
+        </div>
+
+        <nav class="footer-nav">
+
+                                    <div class="footer-col">
+                <ul class="footer-group">
+                                                                                                                        <li class="footer-item">
+                                  <a href="https://ponder.io/product-2/" target="_self" class="footer-parent">PRODUCT</a>
+                                </li>
+                                                                                                                                                                      <li class="footer-item">
+                                  <a href="https://ponder.io/technology/" target="_self" class="footer-parent">SOLUTIONS</a>
+                                </li>
+                                                                                                                                                                      <li class="footer-item">
+                                  <a href="https://ponder.io/community/" target="_self" class="footer-parent">COMMUNITY</a>
+                                </li>
+                                                                                                                                  </ul>
+                    </div>
+                                <div class="footer-col">
+                <ul class="footer-group">
+                                                                                    <li class="footer-item">
+                                                        <a href="https://ponder.io/blog/" target="_self" class="footer-parent">RESOURCES</a>
+                            
+                            <ul class="footer-subnav">
+                                                                                                  <li>
+                                      <a href="https://ponder.io/blog/" target="_self">Blog</a>
+                                    </li>
+                                                                                                                                      <li>
+                                      <a href="http://docs.ponder.io/" target="_self">Docs</a>
+                                    </li>
+                                                                                                                                      <li>
+                                      <a href="https://docs.ponder.io/getting_started/quickstart.html" target="_self">Get Started</a>
+                                    </li>
+                                                                                                </ul>
+                            </li>
+                                                                                                  </ul>
+                    </div>
+                                <div class="footer-col">
+                <ul class="footer-group">
+                                                                                                                        <li class="footer-item">
+                                  <a href="https://ponder.io/company/" target="_self" class="footer-parent">COMPANY</a>
+                                </li>
+                                                                                                                                                                      <li class="footer-item">
+                                  <a href="/contact/" target="_self" class="footer-parent">CONTACT</a>
+                                </li>
+                                                                                                                                  </ul>
+                    </div>
+                                                </nav>
+
+        <!--<div class="footer-form">
+          <p></p>
+          <div class="footer-form--wrap">
+                      </div>
+        </div>!-->
+
+        <div class="social">
+          <ul>
+                              <li>
+                    <a href="https://twitter.com/ponderdata" target="_blank">
+                                        <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.5153 2.24155C14.9353 2.48543 14.3553 2.68053 13.6786 2.72931C14.3553 2.3391 14.8386 1.70501 15.0803 0.973372C14.452 1.36358 13.7753 1.60746 13.0503 1.75379C12.4703 1.1197 11.6486 0.729492 10.7302 0.729492C8.99018 0.729492 7.54015 2.144 7.54015 3.94871C7.54015 4.19259 7.58848 4.43646 7.63682 4.68034C4.97843 4.53402 2.65838 3.26584 1.11169 1.3148C0.82168 1.80256 0.67668 2.3391 0.67668 2.92441C0.67668 4.04625 1.25669 5.02177 2.07837 5.60708C1.5467 5.60708 1.06335 5.46075 0.628343 5.21688V5.26565C0.628343 6.82648 1.74003 8.09465 3.19006 8.38731C2.90006 8.43609 2.65839 8.48486 2.36838 8.48486C2.17504 8.48486 1.98171 8.48486 1.78837 8.43609C2.17505 9.70426 3.3834 10.631 4.73676 10.6798C3.6734 11.5577 2.27171 12.0455 0.773348 12.0455C0.531676 12.0455 0.241675 12.0455 2.95009e-06 11.9967C1.4017 12.9235 3.09339 13.46 4.88176 13.46C10.7302 13.46 13.9203 8.58241 13.9203 4.33891C13.9203 4.19258 13.9203 4.04626 13.9203 3.94871C14.5486 3.41217 15.1286 2.87564 15.5153 2.24155Z" fill="#1DF9EB"/>
+</svg>                  </a>
+                </li>
+                                  <li>
+                    <a href="https://www.linkedin.com/company/ponderdata" target="_blank">
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.138 1.93607C3.138 2.72657 2.55553 3.35063 1.59862 3.35063C0.683304 3.35063 0.10083 2.72657 0.10083 1.93607C0.10083 1.14557 0.683304 0.521484 1.59862 0.521484C2.55553 0.521484 3.0964 1.14557 3.138 1.93607ZM0.184039 13.6687V4.51556H3.01319V13.6687H0.184039ZM4.7606 7.42792C4.7606 6.30458 4.719 5.34767 4.67739 4.51556H7.1321L7.25691 5.80534H7.29852C7.67296 5.22287 8.58828 4.30754 10.1277 4.30754C11.9999 4.30754 13.4145 5.55569 13.4145 8.26002V13.6687H10.5853V8.59289C10.5853 7.42794 10.1693 6.59582 9.12914 6.59582C8.33864 6.59582 7.88099 7.1367 7.67296 7.67757C7.58975 7.84399 7.58975 8.13523 7.58975 8.38486V13.6687H4.7606V7.42792Z" fill="#1DF9EB"/>
+</svg>                  </a>
+                </li>
+                                  <li>
+                    <a href="https://github.com/modin-project/modin" target="_blank">
+                                        <?xml version="1.0" encoding="utf-8"?>
+<svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.8611 19.2609V21.4957C12.4192 22.0092 14.1723 22.0725 15.9691 21.4957V18.367C15.9691 17.6647 15.7137 17.0901 15.0752 16.6431C16.5437 16.5154 17.6291 16.1962 18.3315 15.5577C19.0338 14.9192 19.4169 13.9615 19.4169 12.5568C19.4169 11.5352 19.0977 10.6413 18.4592 9.93897C18.5869 9.61973 18.6507 9.23662 18.6507 8.85353C18.6507 8.34274 18.523 7.83195 18.2676 7.38501C17.7568 7.38501 17.3099 7.44885 16.9268 7.6404C16.5437 7.7681 16.0968 8.0235 15.586 8.4066C14.9475 8.2789 14.2451 8.21504 13.5428 8.21504C12.7128 8.21504 12.0104 8.34273 11.3081 8.47043C10.7973 8.08734 10.3503 7.83195 9.96724 7.6404C9.58415 7.44885 9.13721 7.38501 8.62642 7.38501C8.37102 7.83195 8.24332 8.34274 8.24332 8.85353C8.24332 9.23662 8.30717 9.61973 8.43487 10.0028C7.79638 10.7052 7.47713 11.599 7.47713 12.6206C7.47713 14.0253 7.86023 15.0469 8.56257 15.6215C9.26491 16.1962 10.3503 16.5793 11.8189 16.707C11.4358 17.0262 11.1165 17.4093 10.9888 17.9201C10.6057 18.0478 10.2865 18.1116 9.9034 18.1116C9.58416 18.1116 9.32876 18.0478 9.13721 17.9201C8.94567 17.7924 8.75412 17.6647 8.62642 17.4732C8.43487 17.2816 8.30718 17.0901 8.17948 16.8985C8.05178 16.707 7.86023 16.5793 7.66868 16.4516C7.47714 16.3239 7.22174 16.26 6.96634 16.26C6.71094 16.26 6.58325 16.26 6.58325 16.3877L6.77479 16.5793C6.90249 16.707 7.03019 16.7708 7.15789 16.8985L7.41328 17.1539C7.60483 17.3455 7.79638 17.6647 7.92408 17.984C8.30717 18.8778 9.00951 19.3248 9.96724 19.3248H9.96734C10.0951 19.3248 10.3505 19.3248 10.8611 19.2609Z" fill="#1DF9EB"/>
+</svg>
+                  </a>
+                </li>
+                                  <li>
+                    <a href="https://join.slack.com/t/modin-project/shared_invite/zt-yvk5hr3b-f08p_ulbuRWsAfg9rMY3uA" target="_blank">
+                                        <?xml version="1.0" encoding="utf-8"?>
+<svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.18723 15.7684C9.18723 16.6766 8.45322 17.4106 7.54503 17.4106C6.63685 17.4106 5.90283 16.6766 5.90283 15.7684C5.90283 14.8602 6.63685 14.1262 7.54503 14.1262H9.18723V15.7684Z" fill="#1DF9EB"/>
+<path d="M10.0083 15.7684C10.0083 14.8602 10.7423 14.1262 11.6505 14.1262C12.5587 14.1262 13.2927 14.8602 13.2927 15.7684V19.8739C13.2927 20.7821 12.5587 21.5161 11.6505 21.5161C10.7423 21.5161 10.0083 20.7821 10.0083 19.8739V15.7684Z" fill="#1DF9EB"/>
+<path d="M11.6505 9.17466C10.7423 9.17466 10.0083 8.44065 10.0083 7.53246C10.0083 6.62427 10.7423 5.89026 11.6505 5.89026C12.5587 5.89026 13.2927 6.62427 13.2927 7.53246V9.17466H11.6505Z" fill="#1DF9EB"/>
+<path d="M11.6505 10.0082C12.5587 10.0082 13.2927 10.7422 13.2927 11.6504C13.2927 12.5586 12.5587 13.2926 11.6505 13.2926H7.53258C6.62439 13.2926 5.89038 12.5586 5.89038 11.6504C5.89038 10.7422 6.62439 10.0082 7.53258 10.0082H11.6505Z" fill="#1DF9EB"/>
+<path d="M18.2317 11.6504C18.2317 10.7422 18.9657 10.0082 19.8739 10.0082C20.7821 10.0082 21.5161 10.7422 21.5161 11.6504C21.5161 12.5586 20.7821 13.2926 19.8739 13.2926H18.2317V11.6504Z" fill="#1DF9EB"/>
+<path d="M17.4106 11.6504C17.4106 12.5586 16.6766 13.2926 15.7684 13.2926C14.8602 13.2926 14.1262 12.5586 14.1262 11.6504V7.53246C14.1262 6.62427 14.8602 5.89026 15.7684 5.89026C16.6766 5.89026 17.4106 6.62427 17.4106 7.53246V11.6504Z" fill="#1DF9EB"/>
+<path d="M15.7684 18.2318C16.6766 18.2318 17.4106 18.9658 17.4106 19.874C17.4106 20.7822 16.6766 21.5162 15.7684 21.5162C14.8602 21.5162 14.1262 20.7822 14.1262 19.874V18.2318H15.7684Z" fill="#1DF9EB"/>
+<path d="M15.7684 17.4106C14.8602 17.4106 14.1262 16.6766 14.1262 15.7684C14.1262 14.8602 14.8602 14.1262 15.7684 14.1262H19.8864C20.7945 14.1262 21.5286 14.8602 21.5286 15.7684C21.5286 16.6766 20.7945 17.4106 19.8864 17.4106H15.7684Z" fill="#1DF9EB"/>
+</svg>
+                  </a>
+                </li>
+                          </ul>
+        </div>
+
+      </div>
+
+      <div class="container footer-container footer-disclaimer grid">
+        <div class="privacy">
+          <p>© Ponder Data Inc.</p>
+          <ul>
+                          <li>
+                <a href="/privacy-policy/" target="_self">Privacy Policy</a>
+              </li>
+                                  </ul>
+        </div>
+        
+      </div>
+    </footer>
+
+
+
+    <div class="modal-calendly">
+      <div class="modal-bg"></div>
+      <div class="modal-calendly--inner">
+        <h2>Ready to level up your Pandas game?</h2>
+        <p>Fill out the form and we'll be in touch as soon as possible!</p>
+
+        <div class="modal-calendly--form">
+          <div class="demo-form mlcmp">
+
+  <div>
+    <form 
+      method="post" 
+      id="mc-embedded-demo-form" 
+      name="mc-embedded-subscribe-form" 
+      class="demo-form validate" 
+      target="_blank" 
+      novalidate 
+      data-success="/demo-form"
+    >
+
+      <div class="demo-form--wrap">
+
+        <div class="demo-form--row two-col">
+          <div class="demo-form--input">
+            <input
+              type="text"
+              value=""
+              placeholder="First Name *"
+              name="FNAME"
+              class="fnameval input-required"
+            >
+          </div>
+
+          <div class="demo-form--input">
+            <input
+              type="text"
+              value=""
+              placeholder="Last Name *"
+              name="LNAME"
+              class="lnameval input-required"
+            >
+          </div>
+        </div>
+
+        <div class="demo-form--row one-col">
+          <div class="demo-form--input">
+            <input
+              type="email"
+              value=""
+              placeholder="Email Address *"
+              name="EMAIL"
+              class="emailval check-email input-required"
+            >
+          </div>
+        </div>
+
+        <div class="demo-form--row two-col">
+          <div class="demo-form--input">
+            <input
+              type="text"
+              value=""
+              placeholder="Company"
+              name="COMPANY"
+              class=""
+            >
+          </div>
+
+          <div class="demo-form--input">
+            <input
+              type="text"
+              value=""
+              placeholder="Job Title"
+              name="JOBTITLE"
+              class=""
+            >
+          </div>
+        </div>
+
+        <div id="mce-responses" class="clear">
+          <div class="response" id="mce-error-response" style="display:none"></div>
+          <div class="response" id="mce-success-response" style="display:none"></div>
+        </div>
+
+        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+          <input type="text" name="b_de81cb3c0e5d744a6cc113677_363b0580d6" tabindex="-1" value="">
+        </div>
+
+        <input type="submit" value="Submit" name="subscribe" id="mc-embedded-demo-btn" class="button">
+
+      </div>
+
+    </form>
+
+  </div>
+
+
+</div>
+        </div>
+      </div>
+      <div class="modal-close">
+        <div>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+
+    <script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://ponder.io/wp-content/cache/min/1/ajax/libs/jquery/3.4.0/jquery.min.js?ver=1693894772" defer></script>
+    <script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://ponder.io/wp-content/cache/min/1/flickity@2/dist/flickity.pkgd.min.js?ver=1693894773" defer></script>
+    <script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://ponder.io/wp-content/cache/min/1/npm/js-cookie@beta/dist/js.cookie.min.js?ver=1693894773" defer></script>
+
+    <script type="text/javascript" id="leadin-script-loader-js-js-extra">
+/* <![CDATA[ */
+var leadin_wordpress = {"userRole":"visitor","pageType":"post","leadinPluginVersion":"10.2.5"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://ponder.io/wp-content/cache/min/1/39979729.js?ver=1693894773" id="leadin-script-loader-js-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://ponder.io/wp-content/cache/min/1/wp-content/plugins/prismatic/lib/highlight/js/highlight-core.js?ver=1693894791" id="prismatic-highlight-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="prismatic-highlight-js-after">
+/* <![CDATA[ */
+hljs.initHighlightingOnLoad();
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-browser-checker-js-after">
+/* <![CDATA[ */
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+/* ]]> */
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-extra">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index.php\/)?(.*)wp-json(\/.*|$)|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/ponder.io","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-preload-links-js-after">
+/* <![CDATA[ */
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://ponder.io/wp-content/cache/min/1/wp-content/themes/ponder/js/app.js?ver=1693894773" id="script-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="heateor_sss_sharing_js-js-before">
+/* <![CDATA[ */
+function heateorSssLoadEvent(e) {var t=window.onload;if (typeof window.onload!="function") {window.onload=e}else{window.onload=function() {t();e()}}};	var heateorSssSharingAjaxUrl = 'https://ponder.io/wp-admin/admin-ajax.php', heateorSssCloseIconPath = 'https://ponder.io/wp-content/plugins/sassy-social-share/public/../images/close.png', heateorSssPluginIconPath = 'https://ponder.io/wp-content/plugins/sassy-social-share/public/../images/logo.png', heateorSssHorizontalSharingCountEnable = 0, heateorSssVerticalSharingCountEnable = 0, heateorSssSharingOffset = -10; var heateorSssMobileStickySharingEnabled = 0;var heateorSssCopyLinkMessage = "Link copied.";var heateorSssUrlCountFetched = [], heateorSssSharesText = 'Shares', heateorSssShareText = 'Share';function heateorSssPopup(e) {window.open(e,"popUpWindow","height=400,width=600,left=400,top=100,resizable,scrollbars,toolbar=0,personalbar=0,menubar=no,location=no,directories=no,status")}
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://ponder.io/wp-content/cache/min/1/wp-content/plugins/sassy-social-share/public/js/sassy-social-share-public.js?ver=1693894773" id="heateor_sss_sharing_js-js" defer></script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://ponder.io/wp-content/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script>  <script>"use strict";function wprRemoveCPCSS(){var preload_stylesheets=document.querySelectorAll('link[data-rocket-async="style"][rel="preload"]');if(preload_stylesheets&&0<preload_stylesheets.length)for(var stylesheet_index=0;stylesheet_index<preload_stylesheets.length;stylesheet_index++){var media=preload_stylesheets[stylesheet_index].getAttribute("media")||"all";if(window.matchMedia(media).matches)return void setTimeout(wprRemoveCPCSS,200)}var elem=document.getElementById("rocket-critical-css");elem&&"remove"in elem&&elem.remove()}window.addEventListener?window.addEventListener("load",wprRemoveCPCSS):window.attachEvent&&window.attachEvent("onload",wprRemoveCPCSS);</script><noscript><link data-minify="1" rel="stylesheet" href="https://ponder.io/wp-content/cache/min/1/hmp0lgw.css?ver=1693894772"><link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"><link data-minify="1" rel='stylesheet' id='wp-quicklatex-format-css' href='https://ponder.io/wp-content/cache/min/1/wp-content/plugins/wp-quicklatex/css/quicklatex-format.css?ver=1693894772' type='text/css' media='all' /><link rel='stylesheet' id='wp-block-library-css' href='https://ponder.io/wp-includes/css/dist/block-library/style.min.css?ver=6.5.3' type='text/css' media='all' /><link data-minify="1" rel='stylesheet' id='prismatic-blocks-css' href='https://ponder.io/wp-content/cache/min/1/wp-content/plugins/prismatic/css/styles-blocks.css?ver=1693894772' type='text/css' media='all' /><link data-minify="1" rel='stylesheet' id='prismatic-highlight-css' href='https://ponder.io/wp-content/cache/min/1/wp-content/plugins/prismatic/lib/highlight/css/night-owl.css?ver=1693894791' type='text/css' media='all' /><link data-minify="1" rel='stylesheet' id='voidx-style-css' href='https://ponder.io/wp-content/cache/min/1/wp-content/themes/ponder/style.css?ver=1693894772' type='text/css' media='all' /><link data-minify="1" rel='stylesheet' id='heateor_sss_frontend_css-css' href='https://ponder.io/wp-content/cache/min/1/wp-content/plugins/sassy-social-share/public/css/sassy-social-share-public.css?ver=1693894772' type='text/css' media='all' /><link data-minify="1" rel='stylesheet' id='theme-style-css' href='https://ponder.io/wp-content/cache/min/1/wp-content/themes/ponder/custom.css?ver=1693894772' type='text/css' media='all' /><link data-minify="1" rel='stylesheet' id='custom-style-css' href='https://ponder.io/wp-content/cache/min/1/wp-content/themes/ponder/css/custom-style.css?ver=1693894772' type='text/css' media='all' /><link data-minify="1" rel='stylesheet' id='swiper-bundle-css-css' href='https://ponder.io/wp-content/cache/min/1/wp-content/themes/ponder/css/swiper-bundle.css?ver=1693894772' type='text/css' media='all' /></noscript></body>
+  </html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
